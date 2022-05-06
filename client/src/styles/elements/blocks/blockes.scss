@@ -1,0 +1,318 @@
+@import '../../variables/colors';
+@import '../../mixins/flexes';
+.gradient_block{
+  background: $gradient_black;
+}
+.color_back{
+  background-color: #121212;
+  margin: 0;
+  padding: 0;
+}
+.side_block{
+  width: 45%;
+  height: 115vh;
+  @include flex_column();
+}
+.main_flex{
+  @include flex_space();
+}
+.center_flex{
+  @include flex_custom();
+}
+.flex_star{
+  display: flex;
+  align-items: center;
+}
+.icon_space{
+  width: 30%;
+  margin: 20px 0;
+  @include flex_space();
+  align-items: flex-start;
+}
+
+.step_gradient{
+  height: 300px;
+  position: relative;
+  background: $gradient_light;
+  box-sizing: border-box;
+  color: #FFF;
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  border-radius: 1em;
+  padding: 20px;
+}
+.step{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: 1px;
+  background-color: rgb(0, 0, 0);
+  @include flex_space();
+  align-items: center;
+  border-radius: 1em;
+}
+.flex_space{
+  @include flex_space();
+  flex-direction: column;
+  align-items: center;
+}
+.noise_block{
+  border-radius: 20px;
+  width: 80%;
+  padding: 20px;
+  margin: auto;
+  background: url("../../../../public/img/texture/noisy-texture-100x100-o5-d19-c-000000-t0.png") repeat;
+}
+
+.footer__table{
+  width: 89vw;
+  margin: 10px auto;
+  border-radius: 20px;
+  background-color: #222;
+  display: flex;
+  justify-content: center
+}
+.advertising_gradient{
+  width: 80%;
+  height: 30vh;
+  position: relative;
+  background: $gradient_gray;
+  margin: -15vh auto 0 auto;
+  box-sizing: border-box;
+  color: #FFF;
+  background-clip: padding-box;
+  border: solid 2px transparent;
+  border-radius: 1em;
+}
+.new-footer-color{
+  background-color: #222222;
+}
+.advertising{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: 2px;
+  background-color: rgba(25,25,25,255);
+  border-radius: inherit;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.grid_coins{
+  display: grid;
+  grid-template-columns: 180px 180px 180px;
+}
+.coin_element{
+  background: $gradient_white;
+  border-radius: 30px;
+  @include flex_space();
+  font-size: 12px;
+  align-items: center;
+  padding: 5px 25px 5px 5px ;
+  margin: 6px;
+  text-transform: uppercase;
+}
+.padding_side{
+  padding: 100px 60px;
+}
+.carrousel_item{
+  background-color: rgba(25,25,25,255);
+  padding: 20px 10px;
+  border-radius: 10px;
+  margin: 15px 20px;
+}
+.side_bar{
+  position: fixed;
+  width: 20vw;
+  background-color: #222222;
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+padding: 20px 0;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, .2) inset;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f3fb00, #ea7d00);
+    border-radius: 10px;
+  }
+
+  .list{
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      padding: 10px 0;
+      color: #6d7070;
+      width: 100%;
+      &:hover{
+        background-color: #464444;
+      }
+    }
+    &__icon{
+    font-size: 30px;
+      margin: 4px;
+    }
+    .active_item{
+      background-color: $gold;
+      color: #000000;
+    }
+  }
+}
+.content{
+  line-height: 30px;
+  padding: 100px;
+  margin-left: 20vw;
+  width: 80vw;
+  background-color: #111111;
+}
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+.h5-chart{
+  color: #9d8c8c;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+.infoCoin{
+  margin: 50px 0;
+  &__symbol{
+    color: #9d8c8c;
+    text-transform: uppercase;
+    font-size: 28px;
+  }
+  &__name{
+    color: white;
+    font-size: 28px;
+  }
+  &__flex{
+    margin: 0 10px 30px 0;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__img{
+    width: 80px;
+    margin: 5px;
+  }
+  &__price{
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  &__red{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f32532;
+    color: #ffffff;
+    font-weight: 900;
+  }
+  &__green{
+    font-weight: 900;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #00da64;
+    color: #ffffff;
+  }
+  &__grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+  }
+  &__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__item{
+    display: block;
+    font-size: 20px;
+    color: #9d8f8f;
+  }
+  &__block{
+    margin: 15px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #484646;
+  }
+}
+.menu{
+  .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+    background-color: #222222!important;
+  }
+}
+.trade{
+  background-color: #0e0f12;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  &__flex{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__menu{
+    padding: 20px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__cur{
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  &__account{
+    margin: 20px;
+    padding: 20px 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.17);
+    border-radius: 10px;
+  }
+  &__score{
+    display: block;
+    color: gold;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+#myChart{
+  margin: 20px;
+  width: 80% !important;
+  height: 80vh !important;
+  display: block;
+  box-sizing: border-box;
+}
+.page404{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  color: #FFC60B;
+  background-color: #0e0f12;
+  flex-direction: column;
+}

@@ -1,0 +1,45 @@
+.tb{
+  width: 90%;
+  margin: 50px auto;
+  &__field{
+    width: 100%;
+    margin: 20px 0 !important;
+  }
+  &__cell{
+    width: 20%;
+  }
+  &__head{
+    background-color: #111111;
+    color: #fff7f7 !important;
+  }
+
+}
+
+.coins__grid{
+  display: grid;
+  grid-template-columns: calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6);
+}
+.coins__item{
+  font-size: 12px;
+  padding: 5px 20px;
+  background-color: #222222;
+  border-radius: 5px;
+  margin: 5px;
+}
+.coins__img{
+  display: flex;
+  align-items: center;
+}
+.coins__span{
+  margin: 2px 10px;
+}
+.coins__block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.coins__chart{
+  display: flex;
+  align-items: center;
+  margin: auto 10px;
+}
