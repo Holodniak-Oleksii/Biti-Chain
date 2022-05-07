@@ -1,5 +1,0 @@
-{
-  "port": 5000,
-  "jwtSecret": "thisIsSecret",
-  "mongoURI": "mongodb+srv://Aleksik:913SIhu7ioctVeL5@basa.oacyo.mongodb.net/cryptocurrency?retryWrites=true&w=majority"
-}
