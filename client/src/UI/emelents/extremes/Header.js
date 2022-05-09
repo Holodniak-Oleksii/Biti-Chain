@@ -6,7 +6,7 @@ import {AuthContext} from "../../../context/AuthContext";
 import {AccountCircle, Logout} from "@mui/icons-material";
 import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
 
-function Header({position = 'absolute', AuthVisible}) {
+function Header({position = 'absolute', AuthVisible, backgroundColor = 'transparent', path ='/img/logo.png'}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -26,12 +26,12 @@ function Header({position = 'absolute', AuthVisible}) {
     }
     if(AuthVisible === false) {
         return (
-            <AppBar position={position} sx={{backgroundColor: 'transparent', padding: '0 10%'}}>
+            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: '0 10%'}}>
                 <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <div>
                         <IconButton>
                             <NavLink to="/">
-                                <img alt={"img"} src={"img/logo.png"} width={'50px'}/>
+                                <img alt={"img"} src={path} width={'50px'}/>
                             </NavLink>
                         </IconButton>
                     </div>
@@ -60,12 +60,12 @@ function Header({position = 'absolute', AuthVisible}) {
         );
     }else {
         return (
-            <AppBar position={position} sx={{backgroundColor: 'transparent', padding: '0 10%'}}>
+            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: '0 10%'}}>
                 <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <div>
                         <IconButton>
                             <NavLink to="/">
-                                <img alt={"img"} src={"img/logo.png"} width={'50px'}/>
+                                <img alt={"img"} src={path} width={'50px'}/>
                             </NavLink>
                         </IconButton>
                     </div>
@@ -77,7 +77,7 @@ function Header({position = 'absolute', AuthVisible}) {
                     }}>
                         <div><NavLink to="/blog" style={{color: 'white'}}>Навчальна інформація</NavLink></div>
                         <div><NavLink to="/courses" style={{color: 'white'}}>Курси валют</NavLink></div>
-                        <div><a href="/trade" style={{color: 'white'}}>Трейдити</a></div>
+                        <div><NavLink to="/trade" style={{color: 'white'}}>Трейдити</NavLink></div>
                         <div>Калькулятор</div>
                         <div>Зворотній зв'язок</div>
                     </Typography>
@@ -113,14 +113,14 @@ function Header({position = 'absolute', AuthVisible}) {
                             <MenuItem style={{backgroundColor: '#222'}}>
                                 <NavLink style={{color: '#ffffff'}} to={"../watch"}>
                                     <div style={{display: 'flex', alignItems: 'center'}}>
-                                        <FeaturedPlayListOutlinedIcon sx={{marginRight: '10px'}}/><div>Watchlist</div>
+                                        <FeaturedPlayListOutlinedIcon sx={{marginRight: '10px'}}/><div>Спостереження</div>
                                     </div>
                                 </NavLink>
                             </MenuItem>
                             <MenuItem style={{backgroundColor: '#222'}} onClick={logoutHandler}>
                                 <NavLink style={{color: '#ffffff'}} to={"/"}>
                                     <div style={{display: 'flex', alignItems: 'center'}}>
-                                        <Logout sx={{marginRight: '10px'}}/> <div>Logout</div>
+                                        <Logout sx={{marginRight: '10px'}}/> <div>Вийти</div>
                                     </div>
                                 </NavLink>
                             </MenuItem>

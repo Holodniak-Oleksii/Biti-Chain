@@ -1,6 +1,6 @@
-async function renderChart(ctx, data, labels) {
+async function renderChart(ctx, data, currency, labels) {
   let dataRates = []
-  const socket = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade");
+  const socket = new WebSocket(`wss://stream.binance.com:9443/ws/${currency}usdt@trade`);
   socket.addEventListener('message', function (event) {
     let socketJson = JSON.parse(event.data);
     if (socketJson.p) {

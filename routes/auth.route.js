@@ -6,7 +6,6 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const hiWatch = require("../middleware/watch.middleware");
-const Rate = require("../models/Rate");
 
 // /api/auth/register
 router.post(
@@ -47,7 +46,7 @@ router.post(
             const token = jwt.sign(
                 {userId: user.id},
                 config.get('jwtSecret'),
-                {expiresIn: '1h'}
+                {expiresIn: '3h'}
             )
             res.json({token, userId: user.id})
 
@@ -76,7 +75,6 @@ router.post(
             }
 
             const {email, password} = req.body
-            console.log(req.body.email)
             const user = await User.findOne({ email })
 
             if (!user) {
@@ -92,7 +90,7 @@ router.post(
             const token = jwt.sign(
                 { userId: user.id },
                 config.get('jwtSecret'),
-                { expiresIn: '1h' }
+                { expiresIn: '3h' }
             )
 
             res.json({ token, userId: user.id })

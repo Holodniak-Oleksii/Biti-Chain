@@ -30,13 +30,19 @@ function CoursesPage({AuthVisible}) {
                 setLoading(false)
         })
     }, [])
+    const styleCellNormalHead = {
+        color: '#fff' ,backgroundColor: '#3d3c3c', fontWeight:'bold', fontFamily: 'Tahoma', height: '50px', borderBottom: 0
+    }
 
+    const styleCellNormal = {
+        color: '#fff', borderColor: 'rgb(29 32 39)'
+    }
     return (
         <div className={'color_back'}>
             <Header position={'static'} AuthVisible={AuthVisible}/>
             <div className={'tb'}>
                 <FamousCoins coins={coins.slice(0, 12)} loading={loading}/>
-                <CustomPaginationActionsTable rows={coins} loading={loading}/>
+                <CustomPaginationActionsTable rows={coins} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} loading={loading}/>
             </div>
             <Footer color={'new-footer-color'}/>
         </div>

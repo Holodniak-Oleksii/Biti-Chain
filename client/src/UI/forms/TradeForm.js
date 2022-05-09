@@ -4,7 +4,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import axios from "axios";
 
-function TradeForm({add}) {
+function TradeForm({add, currency}) {
 
     const authData = JSON.parse(localStorage.getItem('userData'))
     const [rate, setRate] = useState(1)
@@ -14,7 +14,7 @@ function TradeForm({add}) {
         }
     }
     const [user, setUser] = React.useState({})
-    const [score, setScore] = React.useState('')
+    const [score, setScore] = React.useState(0)
     const [time, setTime] = React.useState(1);
 
     const handleChange = (event) => {
@@ -61,11 +61,11 @@ function TradeForm({add}) {
         <div className={"trade__menu"}>
             <div className={"trade__account"}>
                 <span className={'trade__cur'}>{user.name}:</span>
-                <span className={'trade__score'}>{score}$</span>
+                <span className={'trade__score'}>{+score.toFixed()}$</span>
             </div>
             <div style={{textAlign: 'center'}}>
                 <span className={'trade__cur'}>
-                    ETH-USDT
+                    {currency}-USDT
                 </span>
                 <span style={{color: 'rgba(255,255,255,0.44)'}}>реальний час</span>
             </div>
@@ -105,7 +105,7 @@ function TradeForm({add}) {
                 <Button color={'success'} variant={'contained'}
                         onClick={()=>{
                             add('#00DA64FF',rate, time)
-                            setRate(0)
+                            setRate(1)
                         }}
                         sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
                     <ArrowCircleUpIcon style={{marginRight: '5px'}}/>
@@ -114,7 +114,7 @@ function TradeForm({add}) {
                 <Button color={'error'} variant={'contained'}
                         onClick={()=>{
                             add('#ec2626',rate, time)
-                            setRate(0)
+                            setRate(1)
                         }}
                         sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
                     <ArrowCircleDownIcon style={{marginRight: '5px'}}/> Вниз +30%</Button>

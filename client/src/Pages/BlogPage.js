@@ -1,11 +1,11 @@
 import React from "react";
 import SideBar from "../UI/emelents/extremes/SideBar";
-import Navbar from "../UI/emelents/extremes/Navbar";
+import Header from "../UI/emelents/extremes/Header";
 
 function BlogPage({AuthVisible}) {
     return (
         <>
-            <Navbar AuthVisible={AuthVisible}/>
+            <Header position={'sticky'} backgroundColor={'#222222'} AuthVisible={AuthVisible}/>
             <div className={'main_flex'}>
                 <SideBar/>
                 <div className={'content'}>

@@ -1,5 +1,5 @@
-const getHistory = async (labels, dataRate) => {
-  let response = await fetch('https://api.binance.com/api/v3/trades?symbol=ETHUSDT&limit=1000', {method: 'GET', headers: {Accept: 'application/json'}});
+const getHistory = async (labels, dataRate, currency) => {
+  let response = await fetch(`https://api.binance.com/api/v3/trades?symbol=${currency}USDT&limit=1000`, {method: 'GET', headers: {Accept: 'application/json'}});
   let commits = await response.json();
 
   for(let i = 0 ; i < commits.length; i++){

@@ -4,6 +4,7 @@
 /client/node_modules
 /node_modules
 /.idea
+/config
 /.pnp
 .pnp.js
 

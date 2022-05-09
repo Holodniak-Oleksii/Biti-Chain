@@ -13,6 +13,9 @@ const rate = new Schema({
   score: {
     type: Number,  unique: false, required: true
   },
+  currency: {
+    type: String,  unique: false, required: true
+  },
   owner: {type: Types.ObjectId, ref: "User" }
 })
 

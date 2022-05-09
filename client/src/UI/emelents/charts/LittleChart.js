@@ -3,7 +3,7 @@ import {Chart, registerables} from "chart.js";
 import { Line } from "react-chartjs-2";
 Chart.register(...registerables);
 
-function LittleChart({prices,color}){
+function LittleChart({prices,color, size = '100%'}){
     let labels = []
     prices.map(()=>{
         labels.push('')
@@ -55,7 +55,7 @@ function LittleChart({prices,color}){
         }
     }
         return (
-            <div style={{width:'100%'}}>
+            <div style={{width:size}}>
                 <Line data={LittleChartConfig.data} options={LittleChartConfig.options} redraw={true} type={'line'}/>
             </div>
         );

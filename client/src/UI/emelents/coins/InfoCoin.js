@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Skeleton} from "@mui/material";
 import axios from "axios";
+import AddButton from "../button/AddButton";
 
 function InfoCoin({nameCoin}) {
     const [loading, setLoading] = useState(true)
@@ -27,18 +28,23 @@ function InfoCoin({nameCoin}) {
             <div style={{color :'white'}} className={'infoCoin'}>
                 <div className={'infoCoin__container'}>
                     <div className={'infoCoin__flex'}>
-                        <div className={'infoCoin__img'}>
-                            <img width={'100%'} src={coin.image.large} alt={coin.name}/>
+                        <div style={{width: '30%'}} className={'infoCoin__flex'}>
+                            <div className={'infoCoin__img'}>
+                                <img width={'100%'} src={coin.image.large} alt={coin.name}/>
+                            </div>
+                            <div>
+                                <span className={'infoCoin__name'}>{coin.name}</span>
+                                <span className={'infoCoin__symbol'}>({coin.symbol})</span>
+                                <div className={'infoCoin__price'}>${coin.market_data.current_price.usd}</div>
+                            </div>
+                            <div>
+                                {Number(coin.market_data.price_change_percentage_1h_in_currency.usd) < 0 ?
+                                    <div className={'infoCoin__red'}>{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(3)}%</div>:
+                                    <div className={'infoCoin__green'}>+{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(3)}%</div>}
+                            </div>
                         </div>
-                        <div>
-                            <span className={'infoCoin__name'}>{coin.name}</span>
-                            <span className={'infoCoin__symbol'}>({coin.symbol})</span>
-                            <div className={'infoCoin__price'}>${coin.market_data.current_price.usd}</div>
-                        </div>
-                        <div>
-                            {Number(coin.market_data.price_change_percentage_1h_in_currency.usd) < 0 ?
-                                <div className={'infoCoin__red'}>{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(3)}%</div>:
-                                <div className={'infoCoin__green'}>+{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(3)}%</div>}
+                        <div >
+                            <AddButton style={{color:'#FFC60B', borderColor: '#FFC60B', width: "100%", fontSize: "16px" }}/>
                         </div>
                     </div>
                     <div className={'infoCoin__grid'}>

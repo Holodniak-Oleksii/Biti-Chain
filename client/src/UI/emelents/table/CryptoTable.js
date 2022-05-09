@@ -11,8 +11,10 @@ import TablePaginationActions from "@mui/material/TablePagination/TablePaginatio
 import {InputAdornment, TableHead, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {NavLink} from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
 import LittleChart from "../charts/LittleChart";
 import {Skeleton} from "@mui/lab";
+import axios from "axios";
 
 TablePaginationActions.propTypes = {
     count: PropTypes.number.isRequired,
@@ -22,21 +24,21 @@ TablePaginationActions.propTypes = {
 };
 
 
-export default function CustomPaginationActionsTable({rows, loading}) {
+export default function CustomPaginationActionsTable({rows, classPagin = 'footer__table', width = '40%', styleCellNormalHead, styleCellNormal, size = '100%', loading, flag = false}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [search, setSearch] = React.useState("");
-    // const [itemDel, setDel] = React.useState("");
+    const [itemDel, setDel] = React.useState("");
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
-    // const deleteItem = (el) => {
-    //     axios.post(`/api/watch/delete-item`, {'data': el.idx}).then(res =>{})
-    //     rows.splice(rows.indexOf(el), 1);
-    //     setDel(el)
-    // }
+    const deleteItem = (el) => {
+        axios.post(`/api/watch/delete-item`, {'data': el.idx}).then()
+        rows.splice(rows.indexOf(el), 1);
+        setDel(el)
+    }
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
@@ -51,13 +53,6 @@ export default function CustomPaginationActionsTable({rows, loading}) {
                 : searchList
         )
     }
-    const styleCellNormalHead = {
-        color: '#fff' ,backgroundColor: '#3d3c3c', fontWeight:'bold', fontFamily: 'Tahoma', height: '50px', borderBottom: 0
-    }
-
-    const styleCellNormal = {
-        color: '#fff', borderColor: 'rgb(29 32 39)'
-    }
 
     if(loading){
         return (
@@ -67,19 +62,40 @@ export default function CustomPaginationActionsTable({rows, loading}) {
     }else {
         return (
             <div>
-                <TextField variant="outlined"
-                           className={'tb__field'}
-                           sx={{
-                               label: {color: 'white'},
-                               input: {color: 'white', border: 'white'},
-                               fieldset: {borderColor: '#464141'}
-                           }}
-                           onChange={(e) => setSearch(e.target.value)}
-                           InputProps={{
-                               startAdornment: (<InputAdornment position="start"><SearchIcon
-                                   sx={{color: 'white'}}/></InputAdornment>),
-                           }}
-                />
+                {flag ?
+                    <div style={{width: '100%', display: 'flex'}}>
+                        <div style={{width: '25%'}} className={'watch-list'}>Твій список спостереження</div>
+                        <div style={{width: '75%'}}>
+                            <TextField variant="outlined"
+                                       className={'tb__field'}
+                                       sx={{
+                                           label: {color: 'white'},
+                                           input: {color: 'white', border: 'white'},
+                                           fieldset: {borderColor: '#464141'}
+                                       }}
+                                       onChange={(e) => setSearch(e.target.value)}
+                                       InputProps={{
+                                           startAdornment: (<InputAdornment position="start"><SearchIcon
+                                               sx={{color: 'white'}}/></InputAdornment>),
+                                       }}
+                            />
+                        </div>
+                    </div>
+                    :
+                    <TextField variant="outlined"
+                               className={'tb__field'}
+                               sx={{
+                                   label: {color: 'white'},
+                                   input: {color: 'white', border: 'white'},
+                                   fieldset: {borderColor: '#464141'}
+                               }}
+                               onChange={(e) => setSearch(e.target.value)}
+                               InputProps={{
+                                   startAdornment: (<InputAdornment position="start"><SearchIcon
+                                       sx={{color: 'white'}}/></InputAdornment>),
+                               }}
+                    />
+                }
                 <div>
                     <TableContainer component={Paper} sx={{borderRadius: '20px', border: 0, backgroundColor: '#222'}}>
                         <Table>
@@ -89,8 +105,9 @@ export default function CustomPaginationActionsTable({rows, loading}) {
                                     <TableCell align="center" style={styleCellNormalHead}>Символ</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>Ціна</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>Зміна ціни</TableCell>
-                                    <TableCell align="center" style={styleCellNormalHead}>Кпаталізація</TableCell>
+                                    <TableCell align="center" style={styleCellNormalHead}>Капіталізація</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>7 днів</TableCell>
+                                    {flag === true && <TableCell align="center" style={styleCellNormalHead}/>}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -98,7 +115,7 @@ export default function CustomPaginationActionsTable({rows, loading}) {
                                     <TableRow key={row.name} hover>
                                         <TableCell align="center" sx={{width: '150px'}} style={styleCellNormal}>
                                             <NavLink to={`/coins/${row.id}`}>
-                                                <img src={row.img} width={'40%'} alt={'img'}/>
+                                                <img src={row.img} width={width} alt={'img'}/>
                                                 <p style={{color: '#fff'}}>{row.name}</p>
                                             </NavLink>
                                         </TableCell>
@@ -119,9 +136,15 @@ export default function CustomPaginationActionsTable({rows, loading}) {
                                         </TableCell>
                                         <TableCell align="center" sx={{width: '150px'}} style={styleCellNormal}>
                                             {Number(row.price_change_percentage_1h_in_currency) < 0 ?
-                                                <LittleChart prices={row.sparkline_in_7d.price} color={"#F90716"}/> :
-                                                <LittleChart prices={row.sparkline_in_7d.price} color={"#00da64"}/>}
+                                                <LittleChart size={size} prices={row.sparkline_in_7d.price} color={"#F90716"}/> :
+                                                <LittleChart size={size} prices={row.sparkline_in_7d.price} color={"#00da64"}/>}
                                         </TableCell>
+                                        {flag === true &&
+                                            <TableCell align="center" style={styleCellNormal}>
+                                                <DeleteIcon style={{cursor: 'pointer'}} onClick={()=>{deleteItem(row)}
+                                                } fontSize={'large'}/>
+                                            </TableCell>
+                                        }
                                     </TableRow>
                                 ))}
 
@@ -133,7 +156,7 @@ export default function CustomPaginationActionsTable({rows, loading}) {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <div className={'footer__table'}>
+                    <div className={classPagin}>
                         <TablePagination style={{color: "white", borderBottom: 0}}
                                          rowsPerPageOptions={[]}
                                          colSpan={3}

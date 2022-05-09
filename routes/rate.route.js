@@ -9,7 +9,7 @@ router.post('/add',hiWatch, async (req, res) =>{
  try{
      console.log(req.body.rate)
      const rate = new Rate({
-         rate: req.body.rate, date: req.body.date, color: req.body.color, score: req.body.score, owner: req.user.userId
+         rate: req.body.rate, date: req.body.date, color: req.body.color, score: req.body.score, currency: req.body.currency, owner: req.user.userId
      })
      await rate.save()
      res.status(201).json({rate})

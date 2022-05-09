@@ -8,19 +8,23 @@ import Header from "../UI/emelents/extremes/Header";
 import axios from "axios";
 import TradeForm from "../UI/forms/TradeForm";
 import VanillaChart from "../UI/emelents/charts/VanillaChart";
+import {useParams} from "react-router-dom";
 Chart.register(...registerables);
 
 function TradePage({AuthVisible}) {
+
+    const {id} = useParams();
+    let currency = id.toString().toUpperCase()
     let data = [];
     let labels = [];
     let result = []
     let allRate = []
     const authData = JSON.parse(localStorage.getItem('userData'))
-    getHistory(labels, data).then()
+    getHistory(labels, data, currency).then()
     setPointRadius(result, data)
 
     let datasets = [{
-        label: "Bitcoin",
+        label: currency,
         radius: 0,
         data: data,
         fill: true,
@@ -38,7 +42,7 @@ function TradePage({AuthVisible}) {
             times.forEach(element => {
                 let dataRate = new Date(element.date)
                     if(dataRate < Date.now()){
-                        axios.get(`https://api.binance.com/api/v3/trades?symbol=ETHUSDT&limit=1`)
+                        axios.get(`https://api.binance.com/api/v3/trades?symbol=${currency}USDT&limit=1`)
                             .then(r=>{
                                 if(element.color === '#00DA64FF'){
                                     if(element.rate < r.data[0].price){
@@ -129,7 +133,7 @@ function TradePage({AuthVisible}) {
     }
 
     const AddingRate = async (color, score, time)=>{
-        axios.get(`https://api.binance.com/api/v3/trades?symbol=ETHUSDT&limit=1`).then(
+        axios.get(`https://api.binance.com/api/v3/trades?symbol=${currency}USDT&limit=1`).then(
             res =>{
                 let empty = [];
                 for(let i = 0; i < 1100; i++){
@@ -146,12 +150,12 @@ function TradePage({AuthVisible}) {
                     data: empty
                 })
             })
-        axios.get(`https://api.binance.com/api/v3/trades?symbol=ETHUSDT&limit=1`)
+        axios.get(`https://api.binance.com/api/v3/trades?symbol=${currency}USDT&limit=1`)
             .then(res => {
                 let date = new Date();
                 let dd = date.setMinutes(date.getMinutes() + time);
                 let dateNow = new Date(dd)
-                return {rate: res.data[0].price, date: dateNow.toISOString(), color: color, score: score}
+                return {rate: res.data[0].price, date: dateNow.toISOString(), color: color, score: score, currency: currency}
             }).then(data =>{
             allRate.push(data)
             axios.post(`/api/rate/add`, data, {
@@ -164,7 +168,7 @@ function TradePage({AuthVisible}) {
     }
 
     useEffect(()=>{
-        axios.get(`/api/rate/data`, {
+        axios.get(`/api/rate/data`,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authData.token}`
@@ -174,6 +178,7 @@ function TradePage({AuthVisible}) {
                 let rate = []
                 res.data.forEach(element => {
                     rate.push({
+                        'currency': element.currency,
                         'score': element.score,
                         'color': element.color,
                         'rate': element.rate,
@@ -185,20 +190,22 @@ function TradePage({AuthVisible}) {
             .then(r => {
                 allRate = r
                 r.map((cur)=>{
-                    let empty = [];
-                    for(let i = 0; i < 1100; i++){
-                        empty[i] = cur.rate
+                    if(cur.currency === currency){
+                        let empty = [];
+                        for(let i = 0; i < 1100; i++){
+                            empty[i] = cur.rate
+                        }
+                        datasets.push({
+                            type: "line",
+                            label: "Stocks",
+                            radius: 0,
+                            fill: false,
+                            borderColor: cur.color,
+                            borderJoinStyle: 'miter',
+                            pointBackgroundColor: "#fff",
+                            data: empty
+                        })
                     }
-                    datasets.push({
-                        type: "line",
-                        label: "Stocks",
-                        radius: 0,
-                        fill: false,
-                        borderColor: cur.color,
-                        borderJoinStyle: 'miter',
-                        pointBackgroundColor: "#fff",
-                        data: empty
-                    })
                 })
             })
     })
@@ -216,7 +223,7 @@ function TradePage({AuthVisible}) {
         LineChartConfig.data.labels = labels;
         LineChartConfig.data.datasets = datasets;
         let ctx = new Chart(ctxEL, LineChartConfig);
-        renderChart(ctx, data, labels).then()
+        renderChart(ctx, data, currency.toString().toLowerCase(), labels).then()
     }
 
 
@@ -225,7 +232,7 @@ return (
             <Header AuthVisible={AuthVisible} position={'static'}/>
             <div className={'trade__flex'}>
                 <VanillaChart/>
-                <TradeForm score={datasets} add={AddingRate}/>
+                <TradeForm currency={currency} add={AddingRate}/>
             </div>
         </div>
     )
