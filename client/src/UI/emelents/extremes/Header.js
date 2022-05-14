@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
 import {AccountCircle, Logout} from "@mui/icons-material";
 import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
+import PersonIcon from '@mui/icons-material/Person';
 
 function Header({position = 'absolute', AuthVisible, backgroundColor = 'transparent', path ='/img/logo.png'}) {
     const [open, setOpen] = React.useState(false);
@@ -43,7 +44,6 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                     }}>
                         <div><NavLink to="/blog" style={{color: 'white'}}>Навчальна інформація</NavLink></div>
                         <div><NavLink to="/courses" style={{color: 'white'}}>Курси валют</NavLink></div>
-                        <div>Калькулятор</div>
                         <div>Зворотній зв'язок</div>
                     </Typography>
                     <div>
@@ -78,7 +78,6 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                         <div><NavLink to="/blog" style={{color: 'white'}}>Навчальна інформація</NavLink></div>
                         <div><NavLink to="/courses" style={{color: 'white'}}>Курси валют</NavLink></div>
                         <div><NavLink to="/trade" style={{color: 'white'}}>Трейдити</NavLink></div>
-                        <div>Калькулятор</div>
                         <div>Зворотній зв'язок</div>
                     </Typography>
                     <div>
@@ -111,6 +110,13 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                             open={Boolean(anchorEl)}
                             onClose={handleCloseMenu}>
                             <MenuItem style={{backgroundColor: '#222'}}>
+                                <NavLink style={{color: '#ffffff'}} to={"../profile"}>
+                                    <div style={{display: 'flex', alignItems: 'center'}}>
+                                        <PersonIcon sx={{marginRight: '10px'}}/><div>Профіль</div>
+                                    </div>
+                                </NavLink>
+                            </MenuItem>
+                            <MenuItem style={{backgroundColor: '#222'}}>
                                 <NavLink style={{color: '#ffffff'}} to={"../watch"}>
                                     <div style={{display: 'flex', alignItems: 'center'}}>
                                         <FeaturedPlayListOutlinedIcon sx={{marginRight: '10px'}}/><div>Спостереження</div>
@@ -120,7 +126,8 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                             <MenuItem style={{backgroundColor: '#222'}} onClick={logoutHandler}>
                                 <NavLink style={{color: '#ffffff'}} to={"/"}>
                                     <div style={{display: 'flex', alignItems: 'center'}}>
-                                        <Logout sx={{marginRight: '10px'}}/> <div>Вийти</div>
+                                        <Logout sx={{marginRight: '10px'}}/>
+                                        <div>Вийти</div>
                                     </div>
                                 </NavLink>
                             </MenuItem>

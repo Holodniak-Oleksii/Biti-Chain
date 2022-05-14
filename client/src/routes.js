@@ -8,6 +8,7 @@ import TradePage from "./Pages/TradePage";
 import Page404 from "./Pages/404Page";
 import ChooseCoinPage from "./Pages/ChooseCoinPage";
 import WatchList from "./Pages/WatchList";
+import ProfilePage from "./Pages/ProfilePage";
 
 export const useRoutes = (AuthVisible) =>{
 
@@ -21,6 +22,7 @@ export const useRoutes = (AuthVisible) =>{
                 <Route path="/trade" element={<ChooseCoinPage AuthVisible={AuthVisible}/>} />
                 <Route path="/currency/:id" element={<TradePage AuthVisible={AuthVisible}/>} />
                 <Route path="/watch" element={<WatchList AuthVisible={AuthVisible}/>} />
+                <Route path="/profile" element={<ProfilePage AuthVisible={AuthVisible}/>} />
                 <Route path="*" element={<Page404 AuthVisible={AuthVisible}/>} />
             </Routes>
         )

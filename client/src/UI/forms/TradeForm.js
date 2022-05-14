@@ -7,9 +7,9 @@ import axios from "axios";
 function TradeForm({add, currency}) {
 
     const authData = JSON.parse(localStorage.getItem('userData'))
-    const [rate, setRate] = useState(1)
+    const [rate, setRate] = useState(10)
     const changeHandler = (event) => {
-        if(event.target.value >= 1 && event.target.value <= score){
+        if(event.target.value >= 10 && event.target.value <= score){
             setRate(event.target.value)
         }
     }
@@ -105,7 +105,7 @@ function TradeForm({add, currency}) {
                 <Button color={'success'} variant={'contained'}
                         onClick={()=>{
                             add('#00DA64FF',rate, time)
-                            setRate(1)
+                            setRate(10)
                         }}
                         sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
                     <ArrowCircleUpIcon style={{marginRight: '5px'}}/>
@@ -114,7 +114,7 @@ function TradeForm({add, currency}) {
                 <Button color={'error'} variant={'contained'}
                         onClick={()=>{
                             add('#ec2626',rate, time)
-                            setRate(1)
+                            setRate(10)
                         }}
                         sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
                     <ArrowCircleDownIcon style={{marginRight: '5px'}}/> Вниз +30%</Button>

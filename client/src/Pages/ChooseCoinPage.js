@@ -5,7 +5,7 @@ function ChooseCoinPage({AuthVisible}) {
 
     const [coins, setCoins] = useState([])
     useEffect(()=>{
-        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=18&page=1&sparkline=true&price_change_percentage=1h`)
+        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=17&page=1&sparkline=true&price_change_percentage=1h`)
             .then(res => {
                 let result = []
                 res.data.map((cur) => {

@@ -62,7 +62,9 @@ function TradePage({AuthVisible}) {
                                                     'Authorization': `Bearer ${authData.token}`
                                                 }
                                             })
+
                                         })
+                                        return true
                                     }else {
                                         axios.get(`/api/auth/all`, {
                                             headers: {
@@ -81,6 +83,7 @@ function TradePage({AuthVisible}) {
                                                 }
                                             })
                                         })
+                                        return  false
                                     }
                                 }else{
                                     if(element.rate > r.data[0].price){
@@ -101,6 +104,7 @@ function TradePage({AuthVisible}) {
                                                 }
                                             })
                                         })
+                                        return true
                                     }else {
                                         axios.get(`/api/auth/all`, {
                                             headers: {
@@ -119,14 +123,20 @@ function TradePage({AuthVisible}) {
                                                 }
                                             })
                                         })
+                                        return false
                                     }
                                 }
+                        }).then(result=>{
+                            let index = times.indexOf(element)
+                            times.splice(index, 1)
+                            datasets.splice(index+1, 1)
+                            axios.post('/api/rate/delete', {data: element, result: result}, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${authData.token}`
+                                }
+                            }).then()
                         })
-
-                        let index = times.indexOf(element)
-                        times.splice(index, 1)
-                        datasets.splice(index+1, 1)
-                        axios.post('/api/rate/delete', element).then()
                     }
                 })
             }
