@@ -48,11 +48,11 @@ function LoginForm(){
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop: 3 }}>
                 <LockIcon sx={{ color: '#ed6c02', mr: 1, my: 0.5 }} />
-                <TextField name="password" onChange={changeHandler} label="Password" variant="standard" sx={style} color="warning" type="password"/>
+                <TextField name="password" onChange={changeHandler} label="Пароль" variant="standard" sx={style} color="warning" type="password"/>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
                 <Button onClick={loginHandler} disabled={loading} variant="contained" color="warning" sx={{px: 4, py: 1, fontSize: '16px'}}>
-                    LOGIN
+                    Увійти
                 </Button>
             </Box>
         </div>

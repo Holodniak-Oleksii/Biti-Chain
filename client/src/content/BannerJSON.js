@@ -21,7 +21,7 @@ const bannerJSON = [{
     'button':'Переглянути',
     'img':'img/mainpage/current.jpg',
     'direction': true,
-    'link':'/list'
+    'link':'/courses'
 }]
 
 export default bannerJSON

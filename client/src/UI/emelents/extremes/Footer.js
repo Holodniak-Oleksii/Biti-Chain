@@ -2,7 +2,7 @@ import React from "react";
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import {Link} from "react-router-dom";
 
 function Footer({color = 'gradient_block'}) {
@@ -20,27 +20,27 @@ function Footer({color = 'gradient_block'}) {
                             кожен клац вирішує твоє майбутнє
                     </div>
                     <div className={"icon_space"}>
-                        <YouTubeIcon/>
-                        <InstagramIcon/>
-                        <FacebookIcon/>
-                        <TwitterIcon/>
+                        <a style={{color: 'white'}} href="https://www.youtube.com/channel/UCLcOuJzfH2oIEcDmSfnWprw"><YouTubeIcon/></a>
+                        <a style={{color: 'white'}} href="https://www.instagram.com/oleksiigolodniak/?hl=uk"><InstagramIcon/></a>
+                        <a style={{color: 'white'}} href="https://www.facebook.com/profile.php?id=100021938161472"><FacebookIcon/></a>
+                        <a style={{color: 'white'}} href="https://www.linkedin.com/in/holodniak-oleksii/"><LinkedInIcon/></a>
                     </div>
                 </div>
                 <div className={'main_flex'} >
                    <ul className={'push'} style={{margin: '20px'}}>
                        <Link to='/'><li>Головна</li></Link>
                        <Link to="/blog"><li>Навчальна інформація</li></Link>
-                       <li>Трейдити</li>
-                    </ul>
-                    <ul className={'push'} style={{margin: '20px'}}>
-                        <li>Зворотній зв'язок</li>
-                        <li>Калькулятор</li>
-                        <li>API документація</li>
-                    </ul>
-                    <ul className={'push'} style={{margin: '20px'}}>
+                       <Link to="/trade"><li>Трейдити</li></Link>
+                   </ul>
+                   <ul className={'push'} style={{margin: '20px'}}>
+                        <Link to="/contact"><li>Зворотній зв'язок</li></Link>
                         <Link to='/courses'><li>Курси валют</li></Link>
-                        <li>Доєднуйся</li>
-                    </ul>
+                        <a href="https://coinmarketcap.com/"><li>CoinMarketCap</li></a>
+                   </ul>
+                   <ul className={'push'} style={{margin: '20px'}}>
+                        <a href="https://www.coingecko.com/"><li>API документація</li></a>
+                        <a href="https://binance-docs.github.io/apidocs/spot/en/"><li>API Binance</li></a>
+                   </ul>
                 </div>
             </div>
         </footer>

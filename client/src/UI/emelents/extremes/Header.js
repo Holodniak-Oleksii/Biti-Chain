@@ -37,7 +37,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                         </IconButton>
                     </div>
                     <Typography component="div" sx={{
-                        width: '60%',
+                        width: '45%',
                         display: 'flex',
                         justifyContent: 'space-between',
                         fontWeight: 'lighter'
@@ -70,7 +70,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                         </IconButton>
                     </div>
                     <Typography component="div" sx={{
-                        width: '60%',
+                        width: '55%',
                         display: 'flex',
                         justifyContent: 'space-between',
                         fontWeight: 'lighter'

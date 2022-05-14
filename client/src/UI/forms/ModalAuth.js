@@ -36,8 +36,8 @@ function ModalAuth({handleClose, open}){
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList variant={'fullWidth'} color={'#ed6c02'} onChange={handleChange} aria-label="lab API tabs example">
-                                    <Tab label="LOGIN" value="1" sx={{color: '#ed6c02'}}/>
-                                    <Tab label="SIGN UP" value="2" sx={{color: '#ed6c02'}}/>
+                                    <Tab label="Увійти" value="1" sx={{color: '#ed6c02'}}/>
+                                    <Tab label="Зареєструватися" value="2" sx={{color: '#ed6c02'}}/>
                                 </TabList>
                             </Box>
                             <TabPanel value="1">

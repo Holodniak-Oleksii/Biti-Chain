@@ -49,7 +49,7 @@ function SingUpForm(){
                 <TextField
                     onChange={changeHandler}
                     name="name"
-                    label="Name" variant="standard" sx={style} color="warning"/>
+                    label="Логін" variant="standard" sx={style} color="warning"/>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop: 3}}>
                 <AlternateEmailIcon sx={{color: '#ed6c02', mr: 1, my: 0.5 }} />
@@ -63,21 +63,21 @@ function SingUpForm(){
                 <TextField
                     onChange={changeHandler}
                     name="password"
-                    label="Password" variant="standard" sx={style} color="warning" type="password"/>
+                    label="Пароль" variant="standard" sx={style} color="warning" type="password"/>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-end', marginTop: 3 }}>
                 <RepeatOnRoundedIcon sx={{ color: '#ed6c02', mr: 1, my: 0.5 }} />
                 <TextField
                     onChange={changeHandler}
                     name="confirm"
-                    label="Confirm Password" variant="standard" sx={style} color="warning" type="password"/>
+                    label="Підтвердити пароль" variant="standard" sx={style} color="warning" type="password"/>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
                 <Button
                     disabled={loading}
                     onClick={registerHandler}
                     variant="contained" color="warning" sx={{px: 4, py: 1, fontSize: '16px'}}>
-                    SIGN UP
+                    Зареєструватися
                 </Button>
             </Box>
         </div>
