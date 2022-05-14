@@ -7,6 +7,8 @@ const schema = new Schema({
   role: { type: String, default: 'User' },
   score: { type: Number, default: 10000 },
   links: [{type: Types.ObjectId, ref: 'Watch'}],
-  rates: [{type: Types.ObjectId, ref: 'Rate'}]
+  rates: [{type: Types.ObjectId, ref: 'Rate'}],
+  history: [{type: Types.ObjectId, ref: 'History'}]
+
 })
 module.exports = model('User', schema)

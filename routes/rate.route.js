@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const Rate = require('../models/Rate')
+const History = require('../models/History')
 const router = Router()
 const hiWatch = require('../middleware/watch.middleware')
 const events = require('events')
@@ -28,11 +29,25 @@ router.get('/data',hiWatch, async(req, res) =>{
   }
 })
 
+// /api/rate/all-history
+router.get('/all-history',hiWatch, async(req, res) =>{
+    try{
+        const dataHistory = await History.find({owner: req.user.userId})
+        res.json(dataHistory)
+    } catch (e){
+        res.status(500).json({message: "Невдалося дістати дані"})
+    }
+})
+
 // /api/rate/delete
-router.post('/delete', async(req, res) => {
+router.post('/delete', hiWatch, async(req, res) => {
     try{
         console.log(req.body)
-        await Rate.deleteMany(req.body);
+        await Rate.deleteMany(req.body.data);
+        const history = new History({
+            rate: req.body.data.rate, date: req.body.data.date, color: req.body.data.color, score: req.body.data.score, currency: req.body.data.currency, result: req.body.result, owner: req.user.userId
+        })
+        await history.save()
         res.status(201).send({message: 'ok'})
     }catch (e){
         res.status(500).json({message: "Something went wrong, please try again"})
