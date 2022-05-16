@@ -6,6 +6,15 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const hiWatch = require("../middleware/watch.middleware");
+// const nodemailer = require('nodemailer');
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth:{
+//         user: config.get('email'),
+//         pass: config.get('pass')
+//     }
+// })
+
 
 // /api/auth/register
 router.post(
@@ -122,5 +131,22 @@ router.post('/set-score', hiWatch ,async (req, res) =>{
         res.status(500).json({message: e.message})
     }
 })
-
+// // /api/auth/send-me-message
+// router.post('/send-me-message' ,async (req, res) =>{
+//     try{
+//         const  mailOptions = {
+//             form: req.body.email,
+//             to: config.get('email'),
+//             subject: `Лист із сайту BitiChain від ${req.body.name}`,
+//             text: req.body.text
+//         }
+//         console.log(mailOptions)
+//         transporter.sendMail(mailOptions, err=>{
+//             res.send(err)
+//         })
+//         res.send('ok')
+//     }catch (e){
+//         res.status(500).json({message: e.message})
+//     }
+// })
 module.exports = router

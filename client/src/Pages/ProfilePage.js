@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Header from "../UI/emelents/extremes/Header";
-
-import DoubleCarousel from "../UI/emelents/carrousel/DoubleCarousel";
 import HistoryTable from "../UI/emelents/table/HistoryTable";
+import PieChart from "../UI/emelents/charts/PieChart";
 
 function ProfilePage({AuthVisible}) {
     const [history, setHistory] = useState([])
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true)
     const [load, setLoad] = useState(true)
-    const [rang, setRang] = useState([])
+    const [rang, setRang] = useState([1, 'Самурай'])
     const authData = JSON.parse(localStorage.getItem('userData'))
-
     function dict_reverse(obj) {
        let new_obj = []
         let rev_obj = Object.keys(obj).reverse();
@@ -58,42 +56,39 @@ function ProfilePage({AuthVisible}) {
             setLoad(false)
         })
     }, [])
-
     if(!load) {
         return (
             <div className={'color_back'}>
-                <Header position={'static'} AuthVisible={AuthVisible}/>
+                <Header AuthVisible={AuthVisible}/>
                 <div className={'profile'}>
                     <div className={'container profile__flex'}>
                         <div className={'profile__history'}>
-                            <HistoryTable rows={history} loading={loading}/>
+                            <PieChart history={history}/>
                         </div>
                         <div className={'profile__info'}>
-                            <div className={'profile__item'}>
-                                <span className={'profile__login'}>Логін:</span>
-                                <span className={'profile__result'}>{user.name}</span>
-                            </div>
-                            <div className={'profile__item'}>
-                                <span className={'profile__login'}>Email:</span>
-                                <span className={'profile__result'}>{user.email}</span>
-                            </div>
-                            <div className={'profile__item'}>
-                                <span className={'profile__login'}>Рахунок:</span>
-                                <span className={'profile__result'}>{user.score}$</span>
-                            </div>
-                            <div className={'profile__item_rank'}>
-                                <span className={'profile__login'}>Ранг:</span>
-                                <div className={'profile__result'}>
-                                    <div className={'profile__rang'}>
-                                        <img src={`../img/ranges/${rang[0]}.png`} alt={rang[1]}/>
+                            <div className={'profile__container'}>
+                                <div className={'profile__text'}>
+                                    <div className={'profile__item'}>
+                                        <span className={'profile__login'}>Логін:</span>
+                                        <span className={'profile__result'}>{user.name}</span>
                                     </div>
-                                    <span>{rang[1]}</span>
+                                    <div className={'profile__item'}>
+                                        <span className={'profile__login'}>Email:</span>
+                                        <span className={'profile__result'}>{user.email}</span>
+                                    </div>
+                                    <div className={'profile__item'}>
+                                        <span className={'profile__login'}>Рахунок:</span>
+                                        <span className={'profile__result'}>{user.score}$</span>
+                                    </div>
+                                </div>
+                                <div className={'profile__status'}>
+                                    <div className={'profile__rang'}>
+                                        <img src={`../img/ranges/${rang[0]}.png`} width={'40%'} title={`Ранг: ${rang[0]} - ${rang[1]}`} alt={rang[1]}/>
+                                    </div>
                                 </div>
                             </div>
+                            <HistoryTable rows={history} loading={loading}/>
                         </div>
-                    </div>
-                    <div>
-                        <DoubleCarousel flag={false}/>
                     </div>
                 </div>
             </div>

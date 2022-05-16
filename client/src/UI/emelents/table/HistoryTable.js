@@ -21,7 +21,7 @@ TablePaginationActions.propTypes = {
 
 export default function HistoryTable({rows, loading}) {
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(6);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
     const handleChangePage = (event, newPage) => {
@@ -36,7 +36,7 @@ export default function HistoryTable({rows, loading}) {
     }
 
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 6));
+        setRowsPerPage(parseInt(event.target.value, 5));
         setPage(0);
     };
 
@@ -50,13 +50,12 @@ export default function HistoryTable({rows, loading}) {
     if(loading){
         return (
             <Skeleton variant="rectangular"  sx={{ bgcolor: '#1a1a1a', marginTop: '50px' }}
-                      width={'100%'} height={'30vh'} />
+                      width={'100%'} height={'20vh'} />
         )
     }else {
         return (
-            <div>
-                <div>
-                    <TableContainer component={Paper} sx={{borderRadius: '20px', border: 0, backgroundColor: '#222'}}>
+            <div style={{width: '100%', marginTop: '20px'}}>
+                    <TableContainer component={Paper} sx={{borderRadius: '20px', width: '100%', border: 0, backgroundColor: '#222'}}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -114,7 +113,6 @@ export default function HistoryTable({rows, loading}) {
                                          ActionsComponent={TablePaginationActions}
                         />
                     </div>
-                </div>
             </div>
         );
     }

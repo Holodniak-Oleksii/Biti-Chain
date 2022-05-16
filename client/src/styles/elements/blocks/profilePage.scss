@@ -1,8 +1,8 @@
 @import '../../mixins/flexes';
 .profile{
-  margin-top: 42px;
+  height: 100vh;
   &__flex{
-    height: 63vh;
+    padding-top: 15vh;
     @include flex_space();
   }
   &__history{
@@ -19,12 +19,12 @@
   &__info{
     display: flex;
     flex-direction: column;
-    width: 48%;
+    width: 70%;
     align-items: start;
   }
   &__login{
     margin: 0 10px;
-    font-size: 24px;
+    font-size: 15px;
     color: #FFC60B;
     font-style: italic;
     font-weight: 600;
@@ -34,25 +34,18 @@
     align-items: center;
     text-align: left;
     margin: 5px;
-    width: 90%;
+    width: 100%;
     border-radius: 20px;
     padding: 15px;
     background-color: #222222;
-    &_rank{
-      display:flex;
-      align-items: center;
-      text-align: left;
-      margin: 5px;
-      padding: 15px;
-    }
   }
   &__result{
     margin: 0 30px;
-    font-size: 20px;
+    font-size: 14px;
   }
   &__rang{
-    height: 60px;
-    width: 60px;
+    height: 120px;
+    width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,5 +53,18 @@
     overflow: hidden;
     border: 2px solid #FFC60B;
     background-color: #0c2135;
+  }
+  &__container{
+    width: 100%;
+    display: flex;;
+  }
+  &__text{
+    width: 70%;
+  }
+  &__status{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
