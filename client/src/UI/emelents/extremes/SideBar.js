@@ -36,15 +36,17 @@ function SideBar() {
                     <Typography>Що такє криптовалюта</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography component={'div'}>
                         <List style={{ filter:'invert(1)'}}>
                             <ListItem disablePadding>
-                                <a href={'#fiat'}><ListItemButton>
-                                    <ListItemIcon>
-                                        <PaidIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Що такє фіатна валюта?" />
-                                </ListItemButton></a>
+                                <a href={'#fiat'}>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            <PaidIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Що такє фіатна валюта?" />
+                                    </ListItemButton>
+                                </a>
                             </ListItem>
                             <ListItem disablePadding>
                                 <a href={'#cur'}><ListItemButton>
@@ -95,7 +97,7 @@ function SideBar() {
                     <Typography>Як отримати криптовалюту?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography component={'div'}>
                         <List style={{ filter:'invert(1)'}}>
                             <ListItem disablePadding>
                                 <a href={'#help'}><ListItemButton>

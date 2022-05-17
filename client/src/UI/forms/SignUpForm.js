@@ -24,7 +24,7 @@ function SingUpForm(){
 
     useEffect(()=>{
         if(error){
-            setToastLists(toastLists.concat(<LowAlert text={error} key={toastLists.length} />));
+            setToastLists(toastLists.concat(<LowAlert bottom={'-110px'} text={error} key={toastLists.length} />));
         }
         clearError()
     }, [error, clearError, toastLists])
@@ -32,7 +32,7 @@ function SingUpForm(){
     const registerHandler = async () =>{
         try {
             const data = await request('../api/auth/register', 'POST', {...form})
-            auth.login(data.token, data.userId)
+            auth.login(data.token, data.userId, data.role)
         }catch (e){}
     }
     const style = {

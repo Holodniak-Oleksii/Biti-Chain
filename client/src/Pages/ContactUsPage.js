@@ -1,27 +1,35 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../UI/emelents/extremes/Header";
 import {Button, TextareaAutosize, TextField} from "@mui/material";
-import axios from "axios";
+import LowAlert from "../UI/emelents/alert/LowAlert";
+import {useHttp} from "../hooks/http.hooks";
 
 function ContactUsPage({AuthVisible}) {
 
     const [form, setForm] = useState({
         email: '', name: '', text: ''
     })
-
+    const {loading, error, request, clearError} = useHttp()
+    const [toastList, setToastList] = useState([]);
     const changeHandler = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
-    const sendHandler = () => {
-        console.log(form)
-      axios.post('/api/auth/send-me-message', form)
+    const sendHandler = async () => {
+        await request('/api/auth/send-me-message', 'POST', form)
         setForm({
             email: '', name: '', text: ''
         })
     }
+    useEffect(()=>{
+        if(error){
+            setToastList(toastList.concat(<LowAlert text={error} bottom={'10px'} left={'0'} key={toastList.length} />));
+        }
+        clearError()
+    }, [error, clearError, toastList])
 
     return (
         <div className={'color_back contact'}>
+            {toastList}
             <Header path={'../img/logo.png'} AuthVisible={AuthVisible}/>
             <div className={'container contact__flex'}>
                 <div className={'contact__form'}>
@@ -50,7 +58,7 @@ function ContactUsPage({AuthVisible}) {
                         placeholder={'Ваше питання'}
                         style={{width: '100%', height: '70px', border: '1px solid #8a8585',backgroundColor: 'rgba(255,255,255,0)', color: 'white'}}
                     />
-                    <Button style={{color: '#9a9292', backgroundColor: '#222', padding: '15px 0'}}
+                    <Button disabled={loading} style={{color: '#9a9292', backgroundColor: '#222', padding: '15px 0'}}
                     onClick={sendHandler}
                     >Надіслати</Button>
                 </div>

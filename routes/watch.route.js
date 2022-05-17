@@ -8,7 +8,7 @@ router.post('/add-item',hiWatch, async (req, res) =>{
         try{
             const exit = await Watch.findOne({name: req.body.name, owner: req.user.userId})
             if(exit){
-                return res.status(500).json({message: "Already to added"})
+                return res.status(500).json({message: "Вже додано"})
             }
             const watch = new Watch({
                 name: req.body.name, owner: req.user.userId
@@ -17,7 +17,7 @@ router.post('/add-item',hiWatch, async (req, res) =>{
             res.status(201).json({watch})
 
         }catch (e){
-            res.status(500).json({message: "Something went wrong, please try again"})
+            res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
         }
 })
 
@@ -27,7 +27,7 @@ router.get('/all', hiWatch ,async (req, res) =>{
             const watch = await Watch.find({owner: req.user.userId})
             res.json(watch)
         }catch (e){
-            res.status(500).json({message: "Something went wrong, please try again"})
+            res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
         }
  })
 
@@ -36,7 +36,7 @@ router.post('/delete-item',async (req, res) =>{
     try{
         await Watch.findOneAndDelete({ _id: req.body.data });
     }catch (e){
-        res.status(500).json({message: "Something went wrong, please try again"})
+        res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
     }
 })
 

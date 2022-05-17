@@ -16,6 +16,7 @@ const AddButton = ({style}) => {
             await request('/api/watch/add-item', 'POST', {name: id}, {
                 'Authorization': `Bearer ${auth.token}`
             })
+            setToastList(toastList.concat(<ErrorAlert key={toastList.length} text={"Успішно додано"}/>));
         }catch (e) {}
     }
 
@@ -29,7 +30,7 @@ const AddButton = ({style}) => {
     return(
         <div>
             {toastList}
-            <Button onClick={handlerClick} style={style}  variant="outlined">Add to watchlist</Button>
+            <Button onClick={handlerClick} style={style}  variant="outlined">Додати у відстеження</Button>
         </div>
     )
 };

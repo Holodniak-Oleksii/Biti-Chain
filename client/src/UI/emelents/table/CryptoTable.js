@@ -8,7 +8,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePaginationActions from "@mui/material/TablePagination/TablePaginationActions";
-import {InputAdornment, TableHead, TextField} from "@mui/material";
+import {InputAdornment, TableFooter, TableHead, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {NavLink} from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -154,26 +154,28 @@ export default function CustomPaginationActionsTable({rows, classPagin = 'footer
                                     </TableRow>
                                 )}
                             </TableBody>
+                            <TableFooter className={classPagin}>
+                                <TableRow style={{width: '100%'}}>
+                                    <TablePagination style={{color: "white", borderBottom: 0}}
+                                                     rowsPerPageOptions={[]}
+                                                     colSpan={4}
+                                                     count={rows.length}
+                                                     rowsPerPage={rowsPerPage}
+                                                     page={page}
+                                                     SelectProps={{
+                                                         inputProps: {
+                                                             'aria-label': 'rows per page',
+                                                         },
+                                                         native: true,
+                                                     }}
+                                                     onPageChange={handleChangePage}
+                                                     onRowsPerPageChange={handleChangeRowsPerPage}
+                                                     ActionsComponent={TablePaginationActions}
+                                    />
+                                </TableRow>
+                            </TableFooter>
                         </Table>
                     </TableContainer>
-                    <div className={classPagin}>
-                        <TablePagination style={{color: "white", borderBottom: 0}}
-                                         rowsPerPageOptions={[]}
-                                         colSpan={3}
-                                         count={rows.length}
-                                         rowsPerPage={rowsPerPage}
-                                         page={page}
-                                         SelectProps={{
-                                             inputProps: {
-                                                 'aria-label': 'rows per page',
-                                             },
-                                             native: true,
-                                         }}
-                                         onPageChange={handleChangePage}
-                                         onRowsPerPageChange={handleChangeRowsPerPage}
-                                         ActionsComponent={TablePaginationActions}
-                        />
-                    </div>
                 </div>
             </div>
         );

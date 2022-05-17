@@ -50,21 +50,29 @@ router.post('/delete', hiWatch, async(req, res) => {
         await history.save()
         res.status(201).send({message: 'ok'})
     }catch (e){
-        res.status(500).json({message: "Something went wrong, please try again"})
+        res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
     }
 })
 // /api/rate/get-messages
 router.get('/get-messages', (req, res) => {
-    emitter.once('newMessage', (message) => {
-        res.json(message)
-    })
+    try{
+        emitter.once('newMessage', (message) => {
+            res.json(message)
+        })
+    }catch (e){
+        res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
+    }
 })
 
 // /api/rate/new-messages
 router.post('/new-messages', ((req, res) => {
-    const message = req.body;
-    emitter.emit('newMessage', message)
-    res.status(200)
+     try {
+        const message = req.body;
+        emitter.emit('newMessage', message)
+        res.status(200)
+    }catch (e){
+        res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
+    }
 }))
 
 

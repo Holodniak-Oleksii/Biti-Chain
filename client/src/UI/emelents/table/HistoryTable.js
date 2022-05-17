@@ -8,7 +8,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePaginationActions from "@mui/material/TablePagination/TablePaginationActions";
-import {TableHead} from "@mui/material";
+import {TableFooter, TableHead} from "@mui/material";
 import {Skeleton} from "@mui/lab";
 
 TablePaginationActions.propTypes = {
@@ -93,26 +93,28 @@ export default function HistoryTable({rows, loading}) {
                                     </TableRow>
                                 )}
                             </TableBody>
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination style={{color: "white", borderBottom: 0}}
+                                                     rowsPerPageOptions={[]}
+                                                     colSpan={3}
+                                                     count={rows.length}
+                                                     rowsPerPage={rowsPerPage}
+                                                     page={page}
+                                                     SelectProps={{
+                                                         inputProps: {
+                                                             'aria-label': 'rows per page',
+                                                         },
+                                                         native: true,
+                                                     }}
+                                                     onPageChange={handleChangePage}
+                                                     onRowsPerPageChange={handleChangeRowsPerPage}
+                                                     ActionsComponent={TablePaginationActions}
+                                    />
+                                </TableRow>
+                            </TableFooter>
                         </Table>
                     </TableContainer>
-                    <div className={'profile__footer'}>
-                        <TablePagination style={{color: "white", borderBottom: 0}}
-                                         rowsPerPageOptions={[]}
-                                         colSpan={3}
-                                         count={rows.length}
-                                         rowsPerPage={rowsPerPage}
-                                         page={page}
-                                         SelectProps={{
-                                             inputProps: {
-                                                 'aria-label': 'rows per page',
-                                             },
-                                             native: true,
-                                         }}
-                                         onPageChange={handleChangePage}
-                                         onRowsPerPageChange={handleChangeRowsPerPage}
-                                         ActionsComponent={TablePaginationActions}
-                        />
-                    </div>
             </div>
         );
     }

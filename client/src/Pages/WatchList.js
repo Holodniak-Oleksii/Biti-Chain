@@ -61,7 +61,7 @@ function WatchList({AuthVisible}) {
             <div className="container" style={{display: 'flex', flexDirection: 'column'}}>
                 <Header AuthVisible={AuthVisible}/>
                 <div style={{marginTop: '6%' }}>
-                    <CustomPaginationActionsTable classPagin={'footer__padin'} width={'20%'} size={'150px'} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} rows={result} flag={true} loading={loading} />
+                    <CustomPaginationActionsTable width={'20%'} size={'150px'} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} rows={result} flag={true} loading={loading} />
                 </div>
             </div>
         </div>

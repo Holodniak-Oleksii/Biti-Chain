@@ -6,6 +6,7 @@ import {AuthContext} from "../../../context/AuthContext";
 import {AccountCircle, Logout} from "@mui/icons-material";
 import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
 import PersonIcon from '@mui/icons-material/Person';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function Header({position = 'absolute', AuthVisible, backgroundColor = 'transparent', path ='/img/logo.png'}) {
     const [open, setOpen] = React.useState(false);
@@ -25,6 +26,8 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
             auth.logout()
         }catch (e){}
     }
+    const authData = JSON.parse(localStorage.getItem('userData'))
+
     if(AuthVisible === false) {
         return (
             <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: '0 10%'}}>
@@ -116,6 +119,15 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                                     </div>
                                 </NavLink>
                             </MenuItem>
+                            {authData.role === 'Admin'?
+                            <MenuItem style={{backgroundColor: '#222'}}>
+                                <NavLink style={{color: '#ffffff'}} to={"../panel"}>
+                                    <div style={{display: 'flex', alignItems: 'center'}}>
+                                        <AdminPanelSettingsIcon sx={{marginRight: '10px'}}/><div>Адмін Панель</div>
+                                    </div>
+                                </NavLink>
+                            </MenuItem>:''
+                            }
                             <MenuItem style={{backgroundColor: '#222'}}>
                                 <NavLink style={{color: '#ffffff'}} to={"../watch"}>
                                     <div style={{display: 'flex', alignItems: 'center'}}>

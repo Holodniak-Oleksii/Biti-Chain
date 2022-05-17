@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Carousel from "./Сarrousel";
-import {Skeleton} from "@mui/lab";
+import Skeleton from '@mui/material/Skeleton';
 import axios from "axios";
 
 function DoubleCarousel({flag= true}) {
