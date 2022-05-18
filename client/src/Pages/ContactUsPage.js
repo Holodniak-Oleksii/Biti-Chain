@@ -19,6 +19,7 @@ function ContactUsPage({AuthVisible}) {
         setForm({
             email: '', name: '', text: ''
         })
+        setToastList(toastList.concat(<LowAlert text={'Надіслано'} bottom={'10px'} left={'0'} key={toastList.length} />));
     }
     useEffect(()=>{
         if(error){

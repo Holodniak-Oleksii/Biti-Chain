@@ -38,6 +38,7 @@
     "mongoose": "^6.1.8",
     "morgan": "^1.10.0",
     "node-fetch": "^3.2.1",
+    "nodemailer": "^6.7.5",
     "realm-web": "^1.7.0",
     "styled-components": "^5.3.3",
     "ws": "^8.6.0"

@@ -13,9 +13,14 @@ router.post('/add-item',hiWatch, async (req, res) =>{
             const watch = new Watch({
                 name: req.body.name, owner: req.user.userId
             })
-            await watch.save()
-            res.status(201).json({watch})
-
+            await watch.save(function(err,result){
+                if (err){
+                    res.status(500).json({message: err})
+                }
+                else{
+                    res.status(201).json({result})
+                }
+            })
         }catch (e){
             res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
         }

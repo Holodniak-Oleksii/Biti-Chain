@@ -8,12 +8,17 @@ const emitter = new events.EventEmitter();
 // /api/rate/add
 router.post('/add',hiWatch, async (req, res) =>{
  try{
-     console.log(req.body.rate)
      const rate = new Rate({
          rate: req.body.rate, date: req.body.date, color: req.body.color, score: req.body.score, currency: req.body.currency, owner: req.user.userId
      })
-     await rate.save()
-     res.status(201).json({rate})
+     await rate.save(function(err,result){
+         if (err){
+             res.status(500).json({message: err})
+         }
+         else{
+             res.status(201).json({result})
+         }
+     })
  } catch (e){
    res.status(500).json({message: e.message})
  }
@@ -42,13 +47,18 @@ router.get('/all-history',hiWatch, async(req, res) =>{
 // /api/rate/delete
 router.post('/delete', hiWatch, async(req, res) => {
     try{
-        console.log(req.body)
         await Rate.deleteMany(req.body.data);
         const history = new History({
             rate: req.body.data.rate, date: req.body.data.date, color: req.body.data.color, score: req.body.data.score, currency: req.body.data.currency, result: req.body.result, owner: req.user.userId
         })
-        await history.save()
-        res.status(201).send({message: 'ok'})
+        await history.save(function(err,result){
+            if (err){
+                res.status(500).json({message: err})
+            }
+            else{
+                res.status(201).json({result})
+            }
+        })
     }catch (e){
         res.status(500).json({message: "Сталася помилка, спробуйте ще раз"})
     }

@@ -6,8 +6,15 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const hiWatch = require("../middleware/watch.middleware");
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(config.get('ApiKey'));
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: config.get('email'),
+        pass: config.get('pass')
+    }
+});
 
 // /api/auth/register
 router.post(
@@ -140,14 +147,18 @@ router.post('/send-me-message',    [
         }
 
         const  mailOptions = {
-            to: config.get('email'),
             form: req.body.email,
+            to: config.get('email'),
             subject: `Лист із сайту BitiChain від ${req.body.name}`,
             text: req.body.text,
-            html: `<strong>${req.body.text}</strong>`
         }
-        await sgMail.send(mailOptions);
-        res.send('ok')
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+               return res.status(500).json( {message:error});
+            } else {
+                return res.status(200).json( {message:'Email sent: ' + info.response});
+            }
+        });
     }catch (e){
         res.status(500).json({message: e.message})
     }
