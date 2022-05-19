@@ -3,8 +3,11 @@ import axios from "axios";
 import Header from "../UI/emelents/extremes/Header";
 import HistoryTable from "../UI/emelents/table/HistoryTable";
 import PieChart from "../UI/emelents/charts/PieChart";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
 
 function ProfilePage({AuthVisible}) {
+    const matches768 = useMediaQuery('(min-width:768px)')
     const [history, setHistory] = useState([])
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true)
@@ -59,7 +62,7 @@ function ProfilePage({AuthVisible}) {
     if(!load) {
         return (
             <div className={'color_back'}>
-                <Header AuthVisible={AuthVisible}/>
+                {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
                 <div className={'profile'}>
                     <div className={'container profile__flex'}>
                         <div className={'profile__history'}>

@@ -4,10 +4,14 @@ import Footer from "../UI/emelents/extremes/Footer";
 import CustomPaginationActionsTable from "../UI/emelents/table/CryptoTable";
 import axios from "axios";
 import FamousCoins from "../UI/emelents/coins/FamousCoins";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function CoursesPage({AuthVisible}) {
     const [coins, setCoins] = useState([])
     const [loading, setLoading] = useState(true)
+    const matches768 = useMediaQuery('(min-width:768px)')
+
     useEffect(()=>{
         axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=1h`)
             .then(res => {
@@ -39,7 +43,7 @@ function CoursesPage({AuthVisible}) {
     }
     return (
         <div className={'color_back'}>
-            <Header position={'static'} AuthVisible={AuthVisible}/>
+            {matches768 ? <Header position={'static'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'tb'}>
                 <FamousCoins coins={coins.slice(0, 12)} loading={loading}/>
                 <CustomPaginationActionsTable rows={coins} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} loading={loading}/>

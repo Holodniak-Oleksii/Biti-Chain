@@ -1,11 +1,15 @@
 import React from "react";
 import SideBar from "../UI/emelents/extremes/SideBar";
 import Header from "../UI/emelents/extremes/Header";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function BlogPage({AuthVisible}) {
+
+    const matches768 = useMediaQuery('(min-width:768px)')
     return (
         <>
-            <Header position={'sticky'} backgroundColor={'#222222'} AuthVisible={AuthVisible}/>
+            {matches768 ? <Header position={'sticky'} backgroundColor={'#222222'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'main_flex'}>
                 <SideBar/>
                 <div className={'content'}>

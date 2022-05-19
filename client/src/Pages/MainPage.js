@@ -6,11 +6,14 @@ import RacketBlock from "../UI/blocks/RacketBlock";
 import ExplanationBlock from "../UI/blocks/ExplanationBlock";
 import Motive from "../UI/blocks/auxiliary blocks/Motive";
 import Footer from "../UI/emelents/extremes/Footer";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import {useMediaQuery} from "@mui/material";
 
 function MainPage({AuthVisible}) {
+    const matches768 = useMediaQuery('(min-width:768px)')
     return (
         <>
-            <Header AuthVisible={AuthVisible}/>
+            {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <RacketBlock/>
             <CarouselBlock/>
             <InformationBlock/>

@@ -36,6 +36,7 @@ function ChartTime({nameCoin}){
                 })
                 return {'data': dataRate, 'labels': labels}
             }).then(data => {
+                console.log(data)
                 setStatisticsPatients(data)
                 setLoading(false)
             })

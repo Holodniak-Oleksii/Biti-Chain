@@ -3,9 +3,11 @@ import Header from "../UI/emelents/extremes/Header";
 import {Button, TextareaAutosize, TextField} from "@mui/material";
 import LowAlert from "../UI/emelents/alert/LowAlert";
 import {useHttp} from "../hooks/http.hooks";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
 
 function ContactUsPage({AuthVisible}) {
-
+    const matches768 = useMediaQuery('(min-width:768px)')
     const [form, setForm] = useState({
         email: '', name: '', text: ''
     })
@@ -31,7 +33,7 @@ function ContactUsPage({AuthVisible}) {
     return (
         <div className={'color_back contact'}>
             {toastList}
-            <Header path={'../img/logo.png'} AuthVisible={AuthVisible}/>
+            {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'container contact__flex'}>
                 <div className={'contact__form'}>
                     <div className={'contact__label'}>Зв'яжіться з нами</div>

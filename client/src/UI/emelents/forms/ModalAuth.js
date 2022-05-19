@@ -17,8 +17,8 @@ function ModalAuth({handleClose, open}){
     };
 
     const style = {position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-            width: matches500 === true ? 400 : 250, bgcolor: '#191919', borderRadius: '10px',
-            boxShadow: 24, px: 4, pb: 4, pt: 2
+            width: matches500 === true ? 400 : 250,  background: `rgb(17, 17, 17)`, padding: `30px 35px 40px`,
+            boxSizing: `border-box`, borderRadius: `20px`
     };
     return(
         <>
@@ -35,12 +35,12 @@ function ModalAuth({handleClose, open}){
                     <Box sx={style}>
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <TabList variant={'fullWidth'} color={'#ed6c02'} onChange={handleChange} aria-label="lab API tabs example">
-                                    <Tab label="Увійти" value="1" sx={{color: '#ed6c02'}}/>
-                                    <Tab label="Зареєструватися" value="2" sx={{color: '#ed6c02'}}/>
+                                <TabList variant={'fullWidth'} sx={{color: 'rgba(255,255,255,0.52)', marginBottom: '20px'}} onChange={handleChange} >
+                                    <Tab label="Увійти" value="1" sx={{color: 'rgba(255,255,255,0.52)'}}/>
+                                    <Tab label="Зареєструватися" value="2" sx={{color: 'rgba(255,255,255,0.52)'}}/>
                                 </TabList>
                             </Box>
-                            <TabPanel value="1">
+                            <TabPanel sx={{color: 'rgba(255,255,255,0.52)'}} value="1">
                                 <LoginForm/>
                             </TabPanel>
                             <TabPanel value="2">

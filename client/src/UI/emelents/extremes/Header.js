@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
-import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography} from "@mui/material";
-import ModalAuth from "../../forms/ModalAuth";
+import {AppBar, Button, useMediaQuery, IconButton, Menu, MenuItem, Toolbar, Typography} from "@mui/material";
+import ModalAuth from "../forms/ModalAuth";
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
 import {AccountCircle, Logout} from "@mui/icons-material";
@@ -9,6 +9,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function Header({position = 'absolute', AuthVisible, backgroundColor = 'transparent', path ='/img/logo.png'}) {
+
+    const matches1250 = useMediaQuery('(min-width:1250px)')
+    const matches1000 = useMediaQuery('(min-width:1000px)')
+    const matches860 = useMediaQuery('(min-width:860px)')
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -30,7 +35,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
 
     if(AuthVisible === false) {
         return (
-            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: '0 10%'}}>
+            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: matches860?'0 10%':'0%'}}>
                 <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <div>
                         <IconButton>
@@ -40,7 +45,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                         </IconButton>
                     </div>
                     <Typography component="div" sx={{
-                        width: '45%',
+                        width: matches1250 ?'45%': matches1000 ? '60%': '70%',
                         display: 'flex',
                         justifyContent: 'space-between',
                         fontWeight: 'lighter'
@@ -63,7 +68,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
         );
     }else {
         return (
-            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: '0 10%'}}>
+            <AppBar position={position} sx={{backgroundColor: backgroundColor, padding: matches860?'0 10%':'0%'}}>
                 <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <div>
                         <IconButton>
@@ -73,7 +78,7 @@ function Header({position = 'absolute', AuthVisible, backgroundColor = 'transpar
                         </IconButton>
                     </div>
                     <Typography component="div" sx={{
-                        width: '55%',
+                        width: matches1250 ?'55%': matches1000 ? '65%': '75%',
                         display: 'flex',
                         justifyContent: 'space-between',
                         fontWeight: 'lighter'

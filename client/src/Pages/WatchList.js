@@ -4,11 +4,14 @@ import axios from "axios";
 import getInfoForList from "../Utils/getInfoForList";
 import Header from "../UI/emelents/extremes/Header";
 import CustomPaginationActionsTable from "../UI/emelents/table/CryptoTable";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const availableList = []
 getInfoForList(250,availableList)
 
 function WatchList({AuthVisible}) {
+    const matches768 = useMediaQuery('(min-width:768px)')
     const [userCoins, setCoins] = useState([])
     const token = useContext(AuthContext)
     let result = []
@@ -59,7 +62,7 @@ function WatchList({AuthVisible}) {
     return(
         <div style={{backgroundColor:'#121212', minHeight: '100vh'}}>
             <div className="container" style={{display: 'flex', flexDirection: 'column'}}>
-                <Header AuthVisible={AuthVisible}/>
+                {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
                 <div style={{marginTop: '6%' }}>
                     <CustomPaginationActionsTable width={'20%'} size={'150px'} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} rows={result} flag={true} loading={loading} />
                 </div>

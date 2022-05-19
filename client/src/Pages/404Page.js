@@ -2,10 +2,13 @@ import React from "react";
 import Header from "../UI/emelents/extremes/Header";
 import {Button} from "@mui/material";
 import {Link} from "react-router-dom";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 function Page404({AuthVisible}) {
+    const matches768 = useMediaQuery('(min-width:768px)')
     return (
         <div  style={{display: 'flex', flexDirection: 'column'}}>
-            <Header AuthVisible={AuthVisible}/>
+            {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'page404'}>
                 <span style={{fontSize: '100px'}}>404</span>
                 <div style={{ color: '#ffffff',fontSize: '20px', display:'block', margin: '20px 0'}}>Ууупс! Дану сторінку не знайдено</div>

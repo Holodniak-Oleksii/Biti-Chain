@@ -6,13 +6,15 @@ import setPointRadius from "../Utils/setPointRadius";
 import LineChartConfig from "../Constants/LineChartConfig";
 import Header from "../UI/emelents/extremes/Header";
 import axios from "axios";
-import TradeForm from "../UI/forms/TradeForm";
+import TradeForm from "../UI/emelents/forms/TradeForm";
 import VanillaChart from "../UI/emelents/charts/VanillaChart";
 import {useParams} from "react-router-dom";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 Chart.register(...registerables);
 
 function TradePage({AuthVisible}) {
-
+    const matches768 = useMediaQuery('(min-width:768px)')
     const {id} = useParams();
     let currency = id.toString().toUpperCase()
     let data = [];
@@ -36,8 +38,6 @@ function TradePage({AuthVisible}) {
     }]
 
     const check = async (datasets, times) => {
-        // console.log('DATA', datasets)
-        // console.log('Time', times)
         if(times){
             times.forEach(element => {
                 let dataRate = new Date(element.date)
@@ -239,7 +239,7 @@ function TradePage({AuthVisible}) {
 
 return (
         <div className="trade">
-            <Header AuthVisible={AuthVisible} position={'static'}/>
+            {matches768 ? <Header position={'static'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'trade__flex'}>
                 <VanillaChart/>
                 <TradeForm currency={currency} add={AddingRate}/>

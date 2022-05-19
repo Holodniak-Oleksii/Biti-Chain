@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Header from "../UI/emelents/extremes/Header";
 import axios from "axios";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
 function ChooseCoinPage({AuthVisible}) {
 
+    const matches768 = useMediaQuery('(min-width:768px)')
     const [coins, setCoins] = useState([])
     useEffect(()=>{
         axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=17&page=1&sparkline=true&price_change_percentage=1h`)
@@ -25,7 +28,7 @@ function ChooseCoinPage({AuthVisible}) {
 
     return (
         <div className={'currency'}>
-            <Header position={'sticky'} path={'../img/logo.png'} AuthVisible={AuthVisible}/>
+            {matches768 ? <Header position={'static'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'container currency__container'}>
                 <div className={'currency__grid'}>
                 {coins.map((cur, idx)=>(

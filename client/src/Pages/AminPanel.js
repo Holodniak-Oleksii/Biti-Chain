@@ -3,8 +3,11 @@ import Header from "../UI/emelents/extremes/Header";
 import AdminTable from "../UI/emelents/table/AdminTable";
 import {AuthContext} from "../context/AuthContext";
 import axios from "axios";
+import Hamburger from "../UI/emelents/extremes/Hamburger";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function AminPanel({AuthVisible}) {
+    const matches768 = useMediaQuery('(min-width:768px)')
     const [userList, setUsers] = useState([])
     const token = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
@@ -24,7 +27,7 @@ function AminPanel({AuthVisible}) {
     if(!loading){
         return (
             <div className={'color_back'} style={{height: '100vh'}}>
-                <Header AuthVisible={AuthVisible}/>
+                {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
                 <div className={'container admin'}>
                     <AdminTable loading={loading} rows={userList}/>
                 </div>
