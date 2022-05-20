@@ -4,10 +4,10 @@ import bannerJSON from "../../content/BannerJSON";
 
 function InformationBlock() {
     return (
-        <div className={'gradient_block'}>
+        <div className={'banner'}>
             {bannerJSON.map((cur, idx)=>{
                 return(
-                    <div key={idx} className={'w80'}>
+                    <div key={idx} className={'banner__w80'}>
                     <Banner
                         img={cur.img}
                             direction={cur.direction}

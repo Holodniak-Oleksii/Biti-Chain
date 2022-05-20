@@ -10,7 +10,7 @@ function BlogPage({AuthVisible}) {
     return (
         <>
             {matches768 ? <Header position={'sticky'} backgroundColor={'#222222'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
-            <div className={'main_flex'}>
+            <div className={'blog'}>
                 <SideBar/>
                 <div className={'content'}>
                     <div className={'text_start'}  id={'fiat'}>

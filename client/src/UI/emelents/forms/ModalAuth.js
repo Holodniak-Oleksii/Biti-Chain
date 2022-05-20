@@ -35,12 +35,12 @@ function ModalAuth({handleClose, open}){
                     <Box sx={style}>
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <TabList variant={'fullWidth'} sx={{color: 'rgba(255,255,255,0.52)', marginBottom: '20px'}} onChange={handleChange} >
-                                    <Tab label="Увійти" value="1" sx={{color: 'rgba(255,255,255,0.52)'}}/>
-                                    <Tab label="Зареєструватися" value="2" sx={{color: 'rgba(255,255,255,0.52)'}}/>
+                                <TabList variant={'fullWidth'} sx={{ marginBottom: '20px'}} onChange={handleChange} >
+                                    <Tab label="Увійти" value="1" sx={{color: 'rgba(255,255,255,0.8)'}}/>
+                                    <Tab label="Зареєструватися" value="2" sx={{color: 'rgba(255,255,255,0.8)'}}/>
                                 </TabList>
                             </Box>
-                            <TabPanel sx={{color: 'rgba(255,255,255,0.52)'}} value="1">
+                            <TabPanel value="1">
                                 <LoginForm/>
                             </TabPanel>
                             <TabPanel value="2">

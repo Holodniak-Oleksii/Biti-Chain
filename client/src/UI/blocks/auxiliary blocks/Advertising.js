@@ -3,9 +3,9 @@ import CoinElement from "../../emelents/coins/CoinElement";
 
 function Advertising() {
     return (
-        <div className={'advertising_gradient'}>
+        <div className={'advertising__gradient'}>
             <div className={'advertising'}>
-                <h2 className={'h20'}>Ми маємо інформацію про 200+ криптовалют світу, з офіційних джерел</h2>
+                <h2 className={'advertising__h'}>Ми маємо інформацію про 200+ криптовалют світу, з офіційних джерел</h2>
                 <div className={'grid_coins'}>
                     <CoinElement text={'BITCOIN'} path={'img/coins/bitcoin.png'}/>
                     <CoinElement text={'ethereum'} path={'img/coins/eth.png'}/>

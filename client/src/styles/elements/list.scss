@@ -1,6 +1,12 @@
 @import '../variables/colors';
+@import "../media/media-mixins";
+
 .push {
   list-style: none;
+
+  @include _520{
+    padding: 2px;
+  }
 }
 .push li {
   position: relative;
@@ -9,6 +15,10 @@
   font-variant: small-caps;
   font-weight: bold;
   cursor: pointer;
+  @include _768{
+    font-size: 12px;
+    padding: 10px 0 10px 20px;
+  }
 }
 .push li:before {
   position: absolute;
@@ -20,6 +30,9 @@
   left: 0;
   transition: .3s ease-in-out;
   top: 27px;
+  @include _768{
+    top: 12px;
+  }
 }
 .push li:after {
   position: absolute;

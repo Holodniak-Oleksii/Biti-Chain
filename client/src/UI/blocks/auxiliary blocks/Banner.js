@@ -5,21 +5,21 @@ import {NavLink} from "react-router-dom";
 function Banner({text, header, direction, button, special , img, link}) {
     if(direction === true){
     return (
-        <div className={'main_flex'} style={{padding: '50px 0', marginTop:'50px'}}>
-            <div style={{width: '50%' }} className={'center_flex'}>
-                <div className={"noise_block"}>
+        <div className={'banner__flex'}>
+            <div className={'banner__center'}>
+                <div className={"banner__noise"}>
                     <img src={img} style={{borderRadius: '20px'}} alt={'img'} width={"100%"}/>
                 </div>
             </div>
-            <div style={{width: '50%' , padding: '0 50px'}} className={'center_flex'}>
-                <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <h1 className={'h30'}>{header}</h1>
-                    <p style={{fontSize: '25px', marginTop: '20px', lineHeight: '35px'}}>
+            <div className={'banner__center banner__pad'}>
+                <div className={'banner__col'}>
+                    <h1 className={'banner__h'}>{header}</h1>
+                    <p className={'banner__p'}>
                             <span className={'span_yellow'}>{special}</span>
                         {text}
                     </p>
-                    <div style={{ marginTop: '20px'}}>
-                        <Button variant={'contained'} style={{ padding: '10px 20px', backgroundColor: 'rgba(25,25,25,255)', borderRadius: '10px'}}>
+                    <div className={'banner__btn'}>
+                        <Button variant={'contained'}>
                             <NavLink to={link} style={{color: 'white'}}>
                                 {button}
                             </NavLink>
@@ -30,16 +30,16 @@ function Banner({text, header, direction, button, special , img, link}) {
         </div>
     );}else {
         return(
-        <div className={'main_flex'} style={{padding: '50px 0', marginTop:'50px'}}>
-            <div style={{width: '50%' , padding: '0 50px'}} className={'center_flex'}>
-                <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <h1 className={'h30'}>{header}</h1>
-                    <p style={{fontSize: '25px', marginTop: '20px'}}>
+        <div className={'banner__flex reverse'}>
+            <div className={'banner__center banner__pad'}>
+                <div className={'banner__col'}>
+                    <h1 className={'banner__h'}>{header}</h1>
+                    <p className={'banner__p'}>
                         {text}
                         <span className={'span_yellow'}>{special}</span>
                     </p>
-                    <div style={{ marginTop: '20px'}}>
-                        <Button variant={'contained'} style={{ padding: '10px 20px', backgroundColor: 'rgba(25,25,25,255)', borderRadius: '10px'}}>
+                    <div className={'banner__btn'}>
+                        <Button variant={'contained'}>
                             <NavLink to={link} style={{color: 'white'}}>
                                 {button}
                             </NavLink>
@@ -47,8 +47,8 @@ function Banner({text, header, direction, button, special , img, link}) {
                     </div>
                 </div>
             </div>
-            <div style={{width: '50%' }} className={'center_flex'}>
-                <div className={"noise_block"}>
+            <div className={'banner__center'}>
+                <div className={"banner__noise"}>
                     <img src={img} style={{borderRadius: '20px'}} alt={'img'} width={"100%"}/>
                 </div>
             </div>

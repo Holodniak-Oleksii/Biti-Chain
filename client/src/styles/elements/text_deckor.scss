@@ -11,10 +11,6 @@
   border-radius: 50%;
   color: black;
 }
-.w80{
-  width: 80%;
-  margin: auto;
-}
 .h40{
   font-size: 50px;
   color: $gold;
@@ -22,33 +18,6 @@
 }
 .h40::after{
   content: url('../../../public/img/texture/star.png');
-}
-
-.h30{
-  font-size: 35px;
-  color: #ffffff;
-  font-weight: 800;
-
-}
-.h30::after{
-  content: url('../../../public/img/texture/star.png');
-}
-
-.h20{
-  font-size: 20px;
-  color: #ffffff;
-  font-weight: 500;
-  width: 40%;
-;
-}
-.h20::after{
-  content: url('../../../public/img/texture/star.png');
-}
-.thin_p{
-  font-size: 20px;
-  font-weight: 100;
-  margin: 30px 0;
-  line-height: 28px
 }
 
 .gradient_button{

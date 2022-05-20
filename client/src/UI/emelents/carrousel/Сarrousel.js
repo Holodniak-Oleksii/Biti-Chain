@@ -6,11 +6,11 @@ import LittleChart from "../charts/LittleChart";
 
 const Carousel = ({trending, direction}) => {
         return(
-            <div className={'carousel_block'}>
+            <div>
             <AliceCarousel
                 responsive={{
                     0:{items: 2},
-                    600:{items: 3},
+                    900:{items: 3},
                     1024: { items:4 }
                 }}
                 mouseTracking
@@ -25,23 +25,23 @@ const Carousel = ({trending, direction}) => {
             >
                 {trending.map((coin, idx) =>{
                     return (
-                        <div key={idx} className={'carrousel_item'}>
+                        <div key={idx} className={'carrousel__item'}>
                             <NavLink to={`/coins/${coin.id}`} style={{display: 'flex'}} >
                                 <img alt={"coin"}
                                      src={coin.img}
-                                     width={'20%'}
+                                     className={'carrousel__img'}
                                 />
                                 <div style={{marginLeft: '10px'}}>
-                                    <div style={{marginBottom:'5px'}}>
+                                    <div className={'carrousel__p'} style={{marginBottom:'5px'}}>
                                         {Number(coin.price_change_percentage_1h_in_currency) < 0 ?
-                                            <div style={{color: "#F90716",fontSize: '1rem'}}>{coin.price_change_percentage_1h_in_currency.toFixed(1)}%</div> :
-                                            <div style={{color: "#00da64",fontSize: '1rem'}}>+{coin.price_change_percentage_1h_in_currency.toFixed(1)}%</div>}
+                                            <div style={{color: "#F90716"}}>{coin.price_change_percentage_1h_in_currency.toFixed(1)}%</div> :
+                                            <div style={{color: "#00da64"}}>+{coin.price_change_percentage_1h_in_currency.toFixed(1)}%</div>}
                                     </div>
-                                    <div style={{color: '#fff', fontSize: '0.8rem'}}>
+                                    <div className={'carrousel__span'}>
                                         <span style={{textTransform: 'uppercase'}}>{coin.symbol}: </span> ${coin.price}
                                     </div>
                                 </div>
-                                <div style={{width: '150px', marginLeft:'10px'}}>
+                                <div className={'carrousel__chart'}>
                                     <LittleChart color={'#c3d21c'} prices={coin.sparkline_in_7d.price}/>
                                 </div>
                             </NavLink>

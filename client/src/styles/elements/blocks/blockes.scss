@@ -8,60 +8,6 @@
   margin: 0;
   padding: 0;
 }
-.side_block{
-  width: 45%;
-  height: 115vh;
-  @include flex_column();
-}
-.main_flex{
-  @include flex_space();
-}
-.center_flex{
-  @include flex_custom();
-}
-.flex_star{
-  display: flex;
-  align-items: center;
-}
-.icon_space{
-  width: 30%;
-  margin: 20px 0;
-  @include flex_space();
-  align-items: flex-start;
-}
-
-.step_gradient{
-  height: 300px;
-  position: relative;
-  background: $gradient_light;
-  box-sizing: border-box;
-  color: #FFF;
-  background-clip: padding-box;
-  border: solid 1px transparent;
-  border-radius: 1em;
-  padding: 20px;
-}
-.step{
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  margin: 1px;
-  background-color: rgb(0, 0, 0);
-  @include flex_space();
-  align-items: center;
-  border-radius: 1em;
-}
-.flex_space{
-  @include flex_space();
-  flex-direction: column;
-  align-items: center;
-}
-.noise_block{
-  border-radius: 20px;
-  width: 80%;
-  padding: 20px;
-  margin: auto;
-  background: url("../../../../public/img/texture/noisy-texture-100x100-o5-d19-c-000000-t0.png") repeat;
-}
 
 .footer__table{
   width: 89vw;
@@ -79,54 +25,11 @@
   display: flex;
   justify-content: center
 }
-.advertising_gradient{
-  width: 80%;
-  height: 30vh;
-  position: relative;
-  background: $gradient_gray;
-  margin: -15vh auto 0 auto;
-  box-sizing: border-box;
-  color: #FFF;
-  background-clip: padding-box;
-  border: solid 2px transparent;
-  border-radius: 1em;
-}
+
 .new-footer-color{
   background-color: #222222;
 }
-.advertising{
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  margin: 2px;
-  background-color: rgba(25,25,25,255);
-  border-radius: inherit;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.grid_coins{
-  display: grid;
-  grid-template-columns: 180px 180px 180px;
-}
-.coin_element{
-  background: $gradient_white;
-  border-radius: 30px;
-  @include flex_space();
-  font-size: 12px;
-  align-items: center;
-  padding: 5px 25px 5px 5px ;
-  margin: 6px;
-  text-transform: uppercase;
-}
-.padding_side{
-  padding: 100px 60px;
-}
-.carrousel_item{
-  background-color: rgba(25,25,25,255);
-  padding: 20px 10px;
-  border-radius: 10px;
-  margin: 15px 20px;
-}
+
 .side_bar{
   position: fixed;
   width: 20vw;
@@ -187,10 +90,6 @@ padding: 20px 0;
   margin-left: 20vw;
   width: 80vw;
   background-color: #111111;
-}
-.container{
-  width: 90%;
-  margin: 0 auto;
 }
 .h5-chart{
   color: #9d8c8c;

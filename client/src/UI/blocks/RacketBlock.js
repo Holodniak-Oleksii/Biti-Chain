@@ -4,23 +4,22 @@ import {NavLink} from "react-router-dom";
 
 function RacketBlock() {
     return (
-        <div className={'gradient_block'}>
-            <div className={'w80 main_flex'} style={{alignItems: 'center'}}>
-                <div className={'side_block'}>
-
-                    <h1  className={'h40'}>
+        <div className={'racket gradient_block'}>
+            <div className={'racket__width main_flex'} style={{alignItems: 'center'}}>
+                <div className={'racket__block'}>
+                    <h1  className={'racket__h'}>
                         Стартуємо на першій космічній!
                     </h1>
-                    <p className={'thin_p'}>
+                    <p className={'racket__p'}>
                         Твій найкращий крипто порадник, який допоможе розібратися у темі "крипто інвестиції" та зробити твої перші кроки, крім того, покаже всю найновішу інформацію про курси крипто валют
                     </p>
-                    <div>
-                        <Button variant={'contained'} style={{ padding: '10px 20px', backgroundColor: 'rgba(25,25,25,255)', borderRadius: '10px'}}>
+                    <div className={'racket__btn'}>
+                        <Button variant={'contained'}>
                             <NavLink to="/blog" style={{color: 'white'}}>Дізнайся більше</NavLink>
                         </Button>
                     </div>
                 </div>
-                <div className={'side_block'}>
+                <div className={'racket__block'}>
                     <img src={'img/orbit.png'} alt={'img'} width={'100%'}/>
                 </div>
             </div>

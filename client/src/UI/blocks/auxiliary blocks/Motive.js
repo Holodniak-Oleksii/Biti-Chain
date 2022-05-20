@@ -4,10 +4,10 @@ import {NavLink} from "react-router-dom";
 
 function Motive() {
     return (
-        <div className={'advertising_gradient'} style={{margin: '100px auto'}}>
-            <div className={'advertising'}>
-                <h2 className={'h20'}>Ми допоможемо вам скоріше опанувати всією необхідною інформацією</h2>
-                <div className={'main_flex'}>
+        <div className={'motive__gradient'}>
+            <div className={'motive'}>
+                <h2 className={'motive__h'}>Ми допоможемо вам скоріше опанувати всією необхідною інформацією</h2>
+                <div className={'motive__flex'}>
                     <Button variant={'contained'} style={{
                         padding: '10px 20px',
                         backgroundColor: 'rgb(195,210,28)',
