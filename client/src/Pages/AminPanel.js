@@ -7,7 +7,8 @@ import Hamburger from "../UI/emelents/extremes/Hamburger";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 function AminPanel({AuthVisible}) {
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
+
     const [userList, setUsers] = useState([])
     const token = useContext(AuthContext)
     const [loading, setLoading] = useState(true)

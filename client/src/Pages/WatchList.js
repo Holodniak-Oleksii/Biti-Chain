@@ -11,7 +11,7 @@ const availableList = []
 getInfoForList(250,availableList)
 
 function WatchList({AuthVisible}) {
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
     const [userCoins, setCoins] = useState([])
     const token = useContext(AuthContext)
     let result = []

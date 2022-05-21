@@ -28,13 +28,13 @@ function InfoCoin({nameCoin}) {
             <div style={{color :'white'}} className={'infoCoin'}>
                 <div className={'infoCoin__container'}>
                     <div className={'infoCoin__flex'}>
-                        <div style={{width: '30%'}} className={'infoCoin__flex'}>
+                        <div className={'infoCoin__flex_coin'}>
                             <div className={'infoCoin__img'}>
                                 <img width={'100%'} src={coin.image.large} alt={coin.name}/>
                             </div>
                             <div>
                                 <span className={'infoCoin__name'}>{coin.name}</span>
-                                <span className={'infoCoin__symbol'}>({coin.symbol})</span>
+                                <span className={'infoCoin__name'} style={{color:' #9d8c8c', textTransform: 'uppercase'}}>({coin.symbol})</span>
                                 <div className={'infoCoin__price'}>${coin.market_data.current_price.usd}</div>
                             </div>
                             <div>
@@ -43,8 +43,8 @@ function InfoCoin({nameCoin}) {
                                     <div className={'infoCoin__green'}>+{coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(3)}%</div>}
                             </div>
                         </div>
-                        <div >
-                            <AddButton style={{color:'#FFC60B', borderColor: '#FFC60B', width: "100%", fontSize: "16px" }}/>
+                        <div className={'infoCoin__btn'}>
+                            <AddButton />
                         </div>
                     </div>
                     <div className={'infoCoin__grid'}>
@@ -87,17 +87,6 @@ function InfoCoin({nameCoin}) {
                         </div>
                     </div>
                 </div>
-                {/*{coin.last_updated}*/}
-                {/*{coin.repos_url.github[0]} */}
-
-                {/*{coin.categories[0]}*/}
-                {/*{coin.coingecko_rank}*/}
-
-                {/*{coin.genesis_date}*/}
-                {/*{coin.hashing_algorithm}*/}
-                {/*{coin.liquidity_score}*/}
-
-                {/*{coin.market_data.market_cap.usd.toString().slice(0, -6)}M*/}
             </div>
         );
     }

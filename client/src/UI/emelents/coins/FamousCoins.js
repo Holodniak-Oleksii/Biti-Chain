@@ -11,15 +11,15 @@ function FamousCoins({coins, loading}) {
     }
     else {
         return (
-            <div className={'coins__grid'}>
+            <div className={'famous__grid'}>
                 {coins.map((cur, idx) => (
-                    <div key={idx} className={'coins__item'}>
-                        <div className={'coins__block'}>
-                            <div className={'coins__img'}>
+                    <div key={idx} className={'famous__item'}>
+                        <div className={'famous__block'}>
+                            <div className={'famous__img'}>
                                 <img src={cur.img} width={'30px'} height={'30px'} alt={cur.name}/>
                                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                                    <span className={'coins__span'}>{cur.name}:</span>
-                                    <span className={'coins__span'}>{cur.price}$</span>
+                                    <span className={'famous__span'}>{cur.name}:</span>
+                                    <span className={'famous__span'}>{cur.price}$</span>
                                 </div>
                             </div>
                             <div>
@@ -29,7 +29,7 @@ function FamousCoins({coins, loading}) {
                                         style={{color: "#00da64"}}>+{cur.price_change_percentage_1h_in_currency.toFixed(3)}%</div>}
                             </div>
                         </div>
-                        <div className={'coins__chart'}>
+                        <div className={'famous__chart'}>
                             <LittleChart prices={cur.sparkline_in_7d.price} color={'yellow'}/>
                         </div>
                     </div>

@@ -1,3 +1,5 @@
+@import "../media/media-mixins";
+
 .input__log{
   margin-bottom: 35px;
   display: block;
@@ -38,4 +40,12 @@ INPUT[type="password"] {
 }
 .btn__log:hover{
   box-shadow: -6px -3px 13px 5px rgba(0, 0, 0, 0.27), 6px 3px 13px 5px rgba(37, 37, 37, 0.1);
+}
+.login__label{
+  button{
+    font-size: 16px;
+    @include _480{
+      font-size: 12px;
+    }
+  }
 }

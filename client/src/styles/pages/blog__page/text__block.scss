@@ -1,7 +1,0 @@
-@import '../../mixins/flexes';
-@import '../../variables/colors';
-@import "../../media/media-mixins";
-
-.blog{
-  @include flex_space();
-}

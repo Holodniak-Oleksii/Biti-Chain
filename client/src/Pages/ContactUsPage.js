@@ -7,7 +7,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Hamburger from "../UI/emelents/extremes/Hamburger";
 
 function ContactUsPage({AuthVisible}) {
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
+
     const [form, setForm] = useState({
         email: '', name: '', text: ''
     })

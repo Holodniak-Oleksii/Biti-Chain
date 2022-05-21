@@ -11,13 +11,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 function ModalAuth({handleClose, open}){
     const [value, setValue] = React.useState('1');
-    const matches500 = useMediaQuery('(min-width:500px)')
+    const matches400 = useMediaQuery('(min-width:400px)')
     const handleChange = (event, newValue) => {
             setValue(newValue);
     };
 
     const style = {position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-            width: matches500 === true ? 400 : 250,  background: `rgb(17, 17, 17)`, padding: `30px 35px 40px`,
+            width: matches400 === true ? 390 : 310,  background: `rgb(17, 17, 17)`, padding: `30px 35px 40px`,
             boxSizing: `border-box`, borderRadius: `20px`
     };
     return(
@@ -35,7 +35,7 @@ function ModalAuth({handleClose, open}){
                     <Box sx={style}>
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <TabList variant={'fullWidth'} sx={{ marginBottom: '20px'}} onChange={handleChange} >
+                                <TabList className={'login__label'} variant={'fullWidth'} sx={{ marginBottom: '20px'}} onChange={handleChange} >
                                     <Tab label="Увійти" value="1" sx={{color: 'rgba(255,255,255,0.8)'}}/>
                                     <Tab label="Зареєструватися" value="2" sx={{color: 'rgba(255,255,255,0.8)'}}/>
                                 </TabList>

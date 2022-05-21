@@ -5,9 +5,11 @@ import Box from "@mui/material/Box";
 import {Button, ButtonGroup} from "@mui/material";
 import axios from "axios";
 import {Skeleton} from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 Chart.register(...registerables);
 
 function ChartTime({nameCoin}){
+    const matches768 = useMediaQuery('(min-width:770px)')
     const [statisticsPatients, setStatisticsPatients] = useState([])
     const [time, setTime] = useState('1')
     const [loading, setLoading] = useState(true)
@@ -87,9 +89,9 @@ function ChartTime({nameCoin}){
         )
     }else {
         return (
-            <div style={{width: '100%', height:'110vh'}}>
-                <Box sx={{ my: 3, height: '40px', display: "flex", justifyContent: 'space-between'}}>
-                    <ButtonGroup aria-label="outlined button group">
+            <div className={'chart-info'}>
+                <Box className={'chart-info__box'}>
+                    <ButtonGroup aria-label="outlined button group" className={'chart-info__h'}>
                         <Button variant={time === '1'?"contained":"outlined"} style={time === '1'? stylesButtonActive : stylesButton} onClick={()=>{
                             setTime('1')
                         }}>День</Button>
@@ -103,9 +105,15 @@ function ChartTime({nameCoin}){
                             setTime('365')
                         }}>Рік</Button>
                     </ButtonGroup>
-                    <span className={'h5-chart'}>Курс {nameCoin}</span>
+                    <span className={'chart-info__h'}>Курс {nameCoin}</span>
                 </Box>
-                <Line data={LittleChartConfig.data} options={LittleChartConfig.options} type={'line'} redraw={true}/>
+                {!matches768?
+                    <div className={'chart-info__container'}>
+                        <div style={{width: '1000px'}}>
+                            <Line data={LittleChartConfig.data} options={LittleChartConfig.options} type={'line'} redraw={true}/>
+                        </div>
+                    </div>
+                    :<Line data={LittleChartConfig.data} options={LittleChartConfig.options} type={'line'} redraw={true}/>}
             </div>
         );
     }

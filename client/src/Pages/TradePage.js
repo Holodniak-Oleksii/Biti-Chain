@@ -14,7 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 Chart.register(...registerables);
 
 function TradePage({AuthVisible}) {
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
     const {id} = useParams();
     let currency = id.toString().toUpperCase()
     let data = [];

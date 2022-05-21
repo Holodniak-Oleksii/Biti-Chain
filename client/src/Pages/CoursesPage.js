@@ -10,8 +10,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 function CoursesPage({AuthVisible}) {
     const [coins, setCoins] = useState([])
     const [loading, setLoading] = useState(true)
-    const matches768 = useMediaQuery('(min-width:768px)')
-
+    const matches768 = useMediaQuery('(min-width:770px)')
+    const matches1024 = useMediaQuery('(min-width:1025px)')
     useEffect(()=>{
         axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=1h`)
             .then(res => {
@@ -46,7 +46,11 @@ function CoursesPage({AuthVisible}) {
             {matches768 ? <Header position={'static'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'tb'}>
                 <FamousCoins coins={coins.slice(0, 12)} loading={loading}/>
-                <CustomPaginationActionsTable rows={coins} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} loading={loading}/>
+                <CustomPaginationActionsTable rows={coins} styleCellNormalHead={styleCellNormalHead}
+                                              styleCellNormal={styleCellNormal}
+                                              loading={loading}
+                size={!matches1024? '120px': '100%'}
+                />
             </div>
             <Footer color={'new-footer-color'}/>
         </div>

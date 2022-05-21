@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LittleChart from "../charts/LittleChart";
 import {Skeleton} from "@mui/lab";
 import axios from "axios";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 TablePaginationActions.propTypes = {
     count: PropTypes.number.isRequired,
@@ -25,6 +26,7 @@ TablePaginationActions.propTypes = {
 
 
 export default function CustomPaginationActionsTable({rows, classPagin = 'footer__table', width = '40%', styleCellNormalHead, styleCellNormal, size = '100%', loading, flag = false}) {
+    const matches768 = useMediaQuery('(min-width:770px)')
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [search, setSearch] = React.useState("");
@@ -101,8 +103,10 @@ export default function CustomPaginationActionsTable({rows, classPagin = 'footer
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align="center" style={styleCellNormalHead}>Менета</TableCell>
-                                    <TableCell align="center" style={styleCellNormalHead}>Символ</TableCell>
+                                    <TableCell align="center" style={styleCellNormalHead}
+                                               sx={!matches768?{width:'60px', borderTopLeftRadius: '20px', paddingTop: '25px'}:{}}
+                                               className={'tb__absolute'}>Менета</TableCell>
+                                    <TableCell align="center" style={styleCellNormalHead} sx={{paddingLeft: !matches768?'120px': '0'}} >Символ</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>Ціна</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>Зміна ціни</TableCell>
                                     <TableCell align="center" style={styleCellNormalHead}>Капіталізація</TableCell>
@@ -112,14 +116,14 @@ export default function CustomPaginationActionsTable({rows, classPagin = 'footer
                             </TableHead>
                             <TableBody>
                                 {handlesearch().map((row) => (
-                                    <TableRow key={row.name} hover>
-                                        <TableCell align="center" sx={{width: '150px'}} style={styleCellNormal}>
+                                    <TableRow key={row.name} hover className={'tb__left'}>
+                                        <TableCell align="center" sx={{width: !matches768? '60px': '150px', backgroundColor: '#222'}} className={'tb__absolute'} style={styleCellNormal}>
                                             <NavLink to={`/coins/${row.id}`}>
-                                                <img src={row.img} width={width} alt={'img'}/>
+                                                <img src={row.img} width={width} alt={'img'} className={'tb__img'}/>
                                                 <p style={{color: '#fff'}}>{row.name}</p>
                                             </NavLink>
                                         </TableCell>
-                                        <TableCell style={styleCellNormal} align="center">
+                                        <TableCell style={styleCellNormal} sx={{paddingLeft: !matches768?'120px': '0'}} align="center" >
                                             {row.symbol.toUpperCase()}
                                         </TableCell>
                                         <TableCell align="center" style={styleCellNormal}>
@@ -158,7 +162,7 @@ export default function CustomPaginationActionsTable({rows, classPagin = 'footer
                                 <TableRow style={{width: '100%'}}>
                                     <TablePagination style={{color: "white", borderBottom: 0}}
                                                      rowsPerPageOptions={[]}
-                                                     colSpan={4}
+                                                     colSpan={matches768?4: 6}
                                                      count={rows.length}
                                                      rowsPerPage={rowsPerPage}
                                                      page={page}

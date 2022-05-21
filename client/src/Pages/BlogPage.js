@@ -6,18 +6,19 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 function BlogPage({AuthVisible}) {
 
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
+
     return (
         <>
             {matches768 ? <Header position={'sticky'} backgroundColor={'#222222'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'blog'}>
                 <SideBar/>
-                <div className={'content'}>
+                <div className={'blog__content'}>
                     <div className={'text_start'}  id={'fiat'}>
                         ВСТУП СRYPTOCURRENCY
                     </div>
                     <div className={'text_fiat'}>
-                        <img src={'img/text/fiat.png'} className={'img_fiat'} alt={'fiat'}/>
+                        <img src={'img/text/fiat.png'} className={'img_fiat'} style={{float: 'left'}} alt={'fiat'}/>
                         <p>Фіатна валюта - це валюта, емісією та контролем якої займається держава. Фіатна валюта може існувати як у готівкою, так і в електронній формі.</p>
                     </div>
                     <p className={'pharagraph_text'} >Чому виникла потреба в альтернативі фіатної валюти?</p>
@@ -62,7 +63,7 @@ function BlogPage({AuthVisible}) {
                     <p className={'text_center_hi'}><strong>Розглянемо як використовують криптовалюти</strong></p>
                     <p className={'pharagraph_text'}>Що таке криптогаманець?</p>
                     <div className={'text_fiat'}>
-                        <img src={'img/text/гаманець.png'} className={'img_fiat'} alt={'гаманець'}/>
+                        <img src={'img/text/cash.png'} className={'img_fiat'} alt={'гаманець'}/>
                         <p id={'data'}>Для роботи з криптовалютами зазвичай потрібно спеціальне програмне забезпечення - це програма-гаманець, вбудована або в програмну, або біржову, або апаратне середовище. Вона дозволяє користувачеві працювати з блокчейном та створювати транзакції або отримувати переклади на свою адресу. Кожен гаманець, незалежно від середовища функціонування, містить приватний та публічні ключі.</p>
                     </div>
                     <p className={'pharagraph_text'}>Які дані зберігає криптогаманець?</p>

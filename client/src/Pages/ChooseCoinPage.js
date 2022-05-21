@@ -5,7 +5,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Hamburger from "../UI/emelents/extremes/Hamburger";
 function ChooseCoinPage({AuthVisible}) {
 
-    const matches768 = useMediaQuery('(min-width:768px)')
+    const matches768 = useMediaQuery('(min-width:770px)')
+
     const [coins, setCoins] = useState([])
     useEffect(()=>{
         axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=17&page=1&sparkline=true&price_change_percentage=1h`)
