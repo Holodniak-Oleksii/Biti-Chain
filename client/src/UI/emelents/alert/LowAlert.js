@@ -1,7 +1,7 @@
 import React from "react";
 import {Snackbar} from "@mui/material";
 
-function LowAlert({text, bottom = '-170px', left="-500px"}){
+function LowAlert({text, bottom = '-170px', left="0%"}){
     const [open, setOpen] = React.useState(true);
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {

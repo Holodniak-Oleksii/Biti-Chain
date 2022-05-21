@@ -18,7 +18,7 @@ function SingUpForm(){
 
     useEffect(()=>{
         if(error){
-            setToastLists(toastLists.concat(<LowAlert bottom={'-80px'} text={error} key={toastLists.length} />));
+            setToastLists(toastLists.concat(<LowAlert bottom={'-20px'} text={error} key={toastLists.length} />));
         }
         clearError()
     }, [error, clearError, toastLists])

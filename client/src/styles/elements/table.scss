@@ -20,15 +20,7 @@
   &__absolute{
     @include _768{
       position: absolute;
+      height: 60px
     }
   }
-}
-
-.watch-list{
-  font-weight: 500;
-  font-size: 23px;
-  color: #b6b6b6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

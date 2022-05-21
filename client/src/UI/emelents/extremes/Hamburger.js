@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AssuredWorkloadIcon from '@mui/icons-material/AssuredWorkload';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 
 function Hamburger({AuthVisible}) {
     const [open, setOpen] = React.useState(false);
@@ -110,6 +111,13 @@ function Hamburger({AuthVisible}) {
                         <NavLink className="menu__item" to={"../watch"}>
                             <div className={'menu__block'}>
                                 <FeaturedPlayListOutlinedIcon sx={{marginRight: '10px'}}/><div>Спостереження</div>
+                            </div>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="menu__item" to={"../trade"}>
+                            <div className={'menu__block'}>
+                                <CandlestickChartIcon sx={{marginRight: '10px'}}/><div>Трейдити</div>
                             </div>
                         </NavLink>
                     </li>

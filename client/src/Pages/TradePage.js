@@ -241,7 +241,16 @@ return (
         <div className="trade">
             {matches768 ? <Header position={'static'} AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
             <div className={'trade__flex'}>
-                <VanillaChart/>
+                {matches768 ?
+                <div className={'trade__chart'}>
+                    <VanillaChart/>
+                </div>:
+                <div className={'trade__container'}>
+                    <div className={'trade__chart'}>
+                        <VanillaChart/>
+                    </div>
+                </div>
+                }
                 <TradeForm currency={currency} add={AddingRate}/>
             </div>
         </div>

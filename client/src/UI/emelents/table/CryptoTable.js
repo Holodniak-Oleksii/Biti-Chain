@@ -65,9 +65,9 @@ export default function CustomPaginationActionsTable({rows, classPagin = 'footer
         return (
             <div>
                 {flag ?
-                    <div style={{width: '100%', display: 'flex'}}>
-                        <div style={{width: '25%'}} className={'watch-list'}>Твій список спостереження</div>
-                        <div style={{width: '75%'}}>
+                    <div className={'watch-list__container'}>
+                        <div className={'watch-list'}>Твій список спостереження</div>
+                        <div className={'watch-list__field'}>
                             <TextField variant="outlined"
                                        className={'tb__field'}
                                        sx={{

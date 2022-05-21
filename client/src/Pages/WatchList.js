@@ -56,14 +56,14 @@ function WatchList({AuthVisible}) {
     }
 
     const styleCellNormal = {
-        color: '#fff', borderColor: 'rgb(72,71,71)'
+        color: '#fff', borderColor: 'rgb(72,71,71)', borderBottom: 0
     }
 
     return(
         <div style={{backgroundColor:'#121212', minHeight: '100vh'}}>
             <div className="container" style={{display: 'flex', flexDirection: 'column'}}>
                 {matches768 ? <Header AuthVisible={AuthVisible}/>: <Hamburger AuthVisible={AuthVisible}/>}
-                <div style={{marginTop: '6%' }}>
+                <div style={{marginTop: '100px' }}>
                     <CustomPaginationActionsTable width={'20%'} size={'150px'} styleCellNormalHead={styleCellNormalHead} styleCellNormal={styleCellNormal} rows={result} flag={true} loading={loading} />
                 </div>
             </div>

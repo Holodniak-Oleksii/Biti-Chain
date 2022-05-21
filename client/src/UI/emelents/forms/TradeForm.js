@@ -59,55 +59,54 @@ function TradeForm({add, currency}) {
     }
     return (
         <div className={"trade__menu"}>
-            <div className={"trade__account"}>
-                <span className={'trade__cur'}>{user.name}:</span>
-                <span className={'trade__score'}>{+score.toFixed()}$</span>
+            <div className={'trade__name'}>
+                <div className={"trade__account"}>
+                    <span className={'trade__cur'}>{user.name}:</span>
+                    <span className={'trade__score'}>{+score.toFixed()}$</span>
+                </div>
+                <div style={{textAlign: 'center'}}>
+                    <span className={'trade__cur'} style={{margin: '10px 0'}}>
+                        {currency}-USDT
+                    </span>
+                    <span style={{color: 'rgba(255,255,255,0.44)'}}>реальний час</span>
+                </div>
             </div>
-            <div style={{textAlign: 'center'}}>
-                <span className={'trade__cur'}>
-                    {currency}-USDT
-                </span>
-                <span style={{color: 'rgba(255,255,255,0.44)'}}>реальний час</span>
+            <div className={'trade__field'}>
+                <TextField className={'tb__field'}
+                           value={rate}
+                           onChange={changeHandler}
+                           sx={{
+                               label: {color: '#575050'},
+                               input: {color: 'rgb(255,255,255)', border: 'rgba(255,255,255,0.52)'},
+                               fieldset: {borderColor: '#464141'}
+                           }} id="outlined-basic" label="Ставка" type={'number'}
+                           inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}} variant="outlined"/>
+                <FormControl sx={{width: '100%'}}>
+                    <Select sx={{
+                                    width: '100%',
+                                    color: 'white',
+                                    label: {color: '#575050'},
+                                    input: {color: 'rgb(255,255,255)', border: 'rgba(255,255,255,0.52)'},
+                                    fieldset: {borderColor: '#464141'}
+                                }}
+                            value={time}
+                            defaultValue={1}
+                            onChange={handleChange}
+                            inputProps={{ 'aria-label': 'Without label' }}
+                        >
+                            <MenuItem value={1}>1хв</MenuItem>
+                            <MenuItem value={5}>5хв</MenuItem>
+                            <MenuItem value={10}>10хв</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
-            <TextField className={'tb__field'}
-                       value={rate}
-                       onChange={changeHandler}
-                       sx={{
-                           label: {color: '#575050'},
-                           input: {color: 'rgb(255,255,255)', border: 'rgba(255,255,255,0.52)'},
-                           fieldset: {borderColor: '#464141'}
-                       }} id="outlined-basic" label="Ставка" type={'number'}
-                       inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}} variant="outlined"/>
-            <FormControl sx={{width: '100%'}}>
-                <Select sx={{
-                                width: '100%',
-                                color: 'white',
-                                label: {color: '#575050'},
-                                input: {color: 'rgb(255,255,255)', border: 'rgba(255,255,255,0.52)'},
-                                fieldset: {borderColor: '#464141'}
-                            }}
-                        value={time}
-                        defaultValue={1}
-                        onChange={handleChange}
-                        inputProps={{ 'aria-label': 'Without label' }}
-                    >
-                        <MenuItem value={1}>1хв</MenuItem>
-                        <MenuItem value={5}>5хв</MenuItem>
-                        <MenuItem value={10}>10хв</MenuItem>
-                </Select>
-            </FormControl>
-            <div style={{
-                width: '100%',
-                marginTop: '20px',
-                display: 'flex',
-                justifyContent: 'space-between'
-            }}>
+            <div className={'trade__btn'}>
                 <Button color={'success'} variant={'contained'}
                         onClick={()=>{
                             add('#00DA64FF',rate, time)
                             setRate(10)
                         }}
-                        sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
+                >
                     <ArrowCircleUpIcon style={{marginRight: '5px'}}/>
                     Вверх +30%
                 </Button>
@@ -116,7 +115,7 @@ function TradeForm({add, currency}) {
                             add('#ec2626',rate, time)
                             setRate(10)
                         }}
-                        sx={{width: '48%', fontSize: '15px', padding: '20px 10px'}}>
+                >
                     <ArrowCircleDownIcon style={{marginRight: '5px'}}/> Вниз +30%</Button>
             </div>
         </div>

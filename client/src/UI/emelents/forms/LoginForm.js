@@ -17,7 +17,7 @@ function LoginForm(){
 
     useEffect(()=>{
         if(error){
-            setToastList(toastList.concat(<LowAlert bottom={'-150px'} text={error} key={toastList.length} />));
+            setToastList(toastList.concat(<LowAlert bottom={'-90px'} text={error} key={toastList.length} />));
         }
         clearError()
     }, [error, clearError, toastList])

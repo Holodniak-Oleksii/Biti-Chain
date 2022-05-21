@@ -157,9 +157,16 @@
   display: block;
   font-size: 40px;
   color: #FFC60B;
+  @include _768{
+    font-size: 20px;
+  }
   &_span{
     display: block;
     font-size: 20px;
     margin-top: 10px;
+    @include _768{
+      font-size: 16px;
+    }
   }
+
 }
